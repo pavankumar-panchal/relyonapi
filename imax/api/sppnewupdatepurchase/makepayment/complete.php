@@ -98,7 +98,7 @@ if($ResponseCode == 0) //Success
     margin-left:116px;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="../styles/style.css?dummy = <? echo (rand());?>">
+<link rel="stylesheet" type="text/css" href="../styles/style.css?dummy = <?php echo (rand());?>">
 <script type='text/javascript' src='../js/jquery.min.js'></script>
 <script language="javascript">
 function viewonlineinvoice(slno)
@@ -130,7 +130,7 @@ function viewonlineinvoice(slno)
         <tr>
           <td colspan="2">&nbsp;</td>
         </tr>
-        <? 
+  <?php 
 
 if($ResponseCode == 0) //Success
 { 
@@ -165,10 +165,10 @@ if($ResponseCode == 0) //Success
                             <td colspan="2"><table width="90%" border="0" cellspacing="0" cellpadding="5" align="center">
                                 <tr>
                                   <td width="45%" valign="top" class="displayfont"><strong>Payment from :</strong><br />
-                                    <? echo($company)?><br />
-                                    <? echo('('.$contactperson.')')?><br />
-                                    <? echo($address)?><br />
-                                    <? echo($place)?> : <? echo($pincode)?></td>
+                                    <?php echo($company)?><br />
+                                    <?php echo('('.$contactperson.')')?><br />
+                                    <?php echo($address)?><br />
+                                    <?php echo($place)?> : <?php echo($pincode)?></td>
                                   <td width="45%"  valign="top" class="displayfont"><strong>Payment To :</strong><br />
                                     Relyon Softech Ltd<br />
                                     No. 73, Shreelekha Complex, <br />
@@ -179,7 +179,7 @@ if($ResponseCode == 0) //Success
                               </table></td>
                           </tr>
                           <tr>
-                            <td colspan="2" class="fontstyle" ><p align="left">You have successfully paid <img src="../images/relyon-rupee-small.jpg" width="8" height="10"  />&nbsp;<font color="#000000"><? 
+                            <td colspan="2" class="fontstyle" ><p align="left">You have successfully paid <img src="../images/relyon-rupee-small.jpg" width="8" height="10"  />&nbsp;<font color="#000000"><?php 
 
 	$sel_receipt_customer_pay = "select * from inv_invoicenumbers where invoiceno = '".$invoicenoformat."';";
 	$resultfetch_customer_pay = runmysqlqueryfetch($sel_receipt_customer_pay);
@@ -198,7 +198,7 @@ if(($deduction_customer_pay == '1') && ($tanno_customer_pay != ''))
 
 echo($amount.'.00')
 
-?></font>. An email also have been sent to <font color="#FF0000"><? echo wordwrap(($emailid),35,"<br>\n",TRUE)?></font> with the confirmation.<br /></p>
+?></font>. An email also have been sent to <font color="#FF0000"><?php echo wordwrap(($emailid),35,"<br>\n",TRUE)?></font> with the confirmation.<br /></p>
                               
                               <p align="left">The details of the software Purchased Transaction is as below:</p></td>
                           </tr>
@@ -210,16 +210,16 @@ echo($amount.'.00')
                                 <tr>
                                   <td><table width="400px" border="0" cellspacing="0" cellpadding="3" align="center" style="border:solid 1px #D4D4D4">
                                       <tr>
-                                        <td class="displayfont"><p align="center"><strong>Transaction Status:</strong> <? echo($Message); ?><br />
-                                            <strong>Relyon Transaction ID:</strong> <? echo($TxnID); ?><br />
-                                            <strong>ICICI Transaction reference Number:</strong> <? echo($TxnID); ?><br />
-                                            <strong>Authorization ID: </strong> <? echo($TxnID) ?> <br />
+                    <td class="displayfont"><p align="center"><strong>Transaction Status:</strong> <?php echo($Message); ?><br />
+                      <strong>Relyon Transaction ID:</strong> <?php echo($TxnID); ?><br />
+                      <strong>ICICI Transaction reference Number:</strong> <?php echo($TxnID); ?><br />
+                      <strong>Authorization ID: </strong> <?php echo($TxnID) ?> <br />
                                           </p></td>
                                       </tr>
                                     </table></td>
                                 </tr>
                                 <tr>
-                                  <td><? echo($grid)?></td>
+                                  <td><?php echo($grid)?></td>
                                 </tr>
                                 <tr>
                                   <td>&nbsp;</td>
@@ -250,7 +250,7 @@ echo($amount.'.00')
               </tr>
             </table></td>
         </tr>
-        <? }else{?>
+  <?php }else{?>
         <tr>
           <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="3" style="border:solid 2px #272727">
               <tr>
@@ -286,9 +286,9 @@ echo($amount.'.00')
                           <tr>
                             <td><table width="400px" border="0" cellspacing="0" cellpadding="3" align="center" style="border:solid 1px #D4D4D4" >
                                 <tr>
-                                  <td class="displayfont"><p align="center"><strong>Transaction Status:</strong><? echo($Message); ?><br />
-                                      <strong>Relyon Transaction ID:</strong> <? echo($TxnID); ?><br />
-                                      <strong>ICICI Transaction reference Number:</strong> <? echo($TxnID); ?><br />
+                  <td class="displayfont"><p align="center"><strong>Transaction Status:</strong><?php echo($Message); ?><br />
+                    <strong>Relyon Transaction ID:</strong> <?php echo($TxnID); ?><br />
+                    <strong>ICICI Transaction reference Number:</strong> <?php echo($TxnID); ?><br />
                                     </p></td>
                                 </tr>
                               </table></td>
@@ -308,7 +308,7 @@ echo($amount.'.00')
               </tr>
             </table></td>
         </tr>
-        <? }?>
+  <?php }?>
         <tr>
           <td></td>
         </tr>
@@ -317,7 +317,7 @@ echo($amount.'.00')
   <tr>
   <td>&nbsp;</td>
   </tr>
-  <? 
+  <?php 
 if($ResponseCode == 0) //Success
 { 
   ?>
@@ -334,7 +334,7 @@ if($ResponseCode == 0) //Success
               </table></td>
           </tr>
           
-    <? }?>
+  <?php }?>
 </table>
 </form>
 </body>

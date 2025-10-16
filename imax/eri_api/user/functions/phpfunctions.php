@@ -1,4 +1,4 @@
-<?
+<?php
 //Include Database Configuration details
 //if(file_exists("../../inc/common_db.inc.php"))
 	include('../../inc/common_db.inc.php');

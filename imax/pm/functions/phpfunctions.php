@@ -7,9 +7,9 @@ elseif(file_exists("../../inc/dbconfig.php"))
 else
 	include('./inc/dbconfig.php');
 
-// PHP 8 compatibility shims for legacy mysql_* APIs (inline to avoid extra files)
-if (!function_exists('mysql_connect')) {
-	function mysql_connect($host = null, $user = null, $password = null)
+// PHP 8 compatibility shims for legacy mysqli_* APIs (inline to avoid extra files)
+if (!function_exists('mysqli_connect')) {
+	function mysqli_connect($host = null, $user = null, $password = null)
 	{
 		$link = mysqli_connect($host, $user, $password);
 		if (!$link) {
@@ -18,38 +18,50 @@ if (!function_exists('mysql_connect')) {
 		return $link;
 	}
 }
-if (!function_exists('mysql_select_db')) {
-	function mysql_select_db($dbname, $link_identifier = null)
+if (!function_exists('mysqli_select_db')) {
+	function mysqli_select_db($dbname, $link_identifier = null)
 	{
 		return mysqli_select_db($link_identifier, $dbname);
 	}
 }
-if (!function_exists('mysql_query')) {
-	function mysql_query($query, $link_identifier = null)
+if (!function_exists('mysqli_query')) {
+	function mysqli_query($query, $link_identifier = null)
 	{
 		return mysqli_query($link_identifier, $query);
 	}
 }
-if (!function_exists('mysql_fetch_array')) {
-	function mysql_fetch_array($result)
+if (!function_exists('mysqli_fetch_array')) {
+	function mysqli_fetch_array($result)
 	{
 		return mysqli_fetch_array($result, MYSQLI_BOTH);
 	}
 }
-if (!function_exists('mysql_num_rows')) {
-	function mysql_num_rows($result)
+if (!function_exists('mysqli_fetch_row')) {
+	function mysqli_fetch_row($result)
+	{
+		return mysqli_fetch_row($result);
+	}
+}
+if (!function_exists('mysqli_fetch_assoc')) {
+	function mysqli_fetch_assoc($result)
+	{
+		return mysqli_fetch_assoc($result);
+	}
+}
+if (!function_exists('mysqli_num_rows')) {
+	function mysqli_num_rows($result)
 	{
 		return mysqli_num_rows($result);
 	}
 }
-if (!function_exists('mysql_error')) {
-	function mysql_error($link_identifier = null)
+if (!function_exists('mysqli_error')) {
+	function mysqli_error($link_identifier = null)
 	{
 		return mysqli_error($link_identifier);
 	}
 }
-if (!function_exists('mysql_real_escape_string')) {
-	function mysql_real_escape_string($unescaped_string, $link_identifier = null)
+if (!function_exists('mysqli_real_escape_string')) {
+	function mysqli_real_escape_string($unescaped_string, $link_identifier = null)
 	{
 		if ($link_identifier) {
 			return mysqli_real_escape_string($link_identifier, $unescaped_string);
@@ -57,9 +69,18 @@ if (!function_exists('mysql_real_escape_string')) {
 		return addslashes($unescaped_string);
 	}
 }
+if (!function_exists('mysqli_close')) {
+	function mysqli_close($link_identifier = null)
+	{
+		if ($link_identifier) {
+			return mysqli_close($link_identifier);
+		}
+		return true;
+	}
+}
 
 //Connect to host
-$newconnection = mysql_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
+$newconnection = mysqli_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
 
 
 /* -------------------- Get local server time [by adding 5.30 hours] -------------------- */
@@ -86,10 +107,10 @@ function runmysqlquery($query)
 	}
 
 	//Connect to Database
-	mysql_select_db($dbname,$newconnection) or die("Cannot connect to database");
+	mysqli_select_db($dbname,$newconnection) or die("Cannot connect to database");
 	set_time_limit(3600);
 	//Run the query
-	$result = mysql_query($query,$newconnection) or die(" run Query Failed in Runquery function1.".$query); //;
+	$result = mysqli_query($query,$newconnection) or die(" run Query Failed in Runquery function1.".$query); //;
 	
 	//Return the result
 	return $result;
@@ -111,13 +132,13 @@ function runmysqlqueryfetch($query)
 	}
 
 	//Connect to Database
-	mysql_select_db($dbname,$newconnection) or die("Cannot connect to database");
+	mysqli_select_db($dbname,$newconnection) or die("Cannot connect to database");
 	set_time_limit(3600);
 	//Run the query
-	$result = mysql_query($query,$newconnection) or die("run Query Failed in Runquery function1.".$query); //;
+	$result = mysqli_query($query,$newconnection) or die("run Query Failed in Runquery function1.".$query); //;
 	
 	//Fetch the Query to an array
-	$fetchresult = mysql_fetch_array($result) or die("Cannot fetch the query result.".$query);
+	$fetchresult = mysqli_fetch_array($result) or die("Cannot fetch the query result.".$query);
 	
 	//Return the result
 	return $fetchresult;
@@ -968,11 +989,11 @@ function productname()
 {
 	$query = "select productname from saral_products order by productname";
 	$result = runmysqlquery($query);
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		echo('<option value="'.$fetch['productname'].'">'.$fetch['productname'].'</option>');
 	}
@@ -983,11 +1004,11 @@ function category()
 	$query = "SELECT cid, category FROM email_mas_category ORDER BY category desc "; 
 	$result = runmysqlquery($query);
 	
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		echo('<option value="'.$fetch['cid'].'">'.$fetch['category'].'</option>');
 	}
@@ -997,22 +1018,22 @@ function forwards()
 {
 	/*$query = "SELECT email,forwards FROM email_acc_record WHERE deleted='NO' ORDER BY email"; 
 	$result = queryhb($query);                  
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		echo('<option value="'.$fetch['email'].'">'.$fetch['email'].'</option>');
 	}*/
 	
 	$query = "SELECT grouphead,forwarder FROM email_grouphead ORDER BY grouphead"; 
 	$result = runmysqlquery($query);                  
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		if($fetch['forwarder'] <> '')
 		{
@@ -1027,11 +1048,11 @@ function grouphead()
 {
 	$query = "SELECT * FROM email_grouphead ORDER BY grouphead"; 
 	$result = runmysqlquery($query);                  
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		echo('<option value="'.$fetch['id'].'">'.$fetch['grouphead'].'</option>');
 	}
@@ -1041,11 +1062,11 @@ function department()
 {
 	$query = "SELECT * FROM saral_job_required_depatment ORDER BY department"; 
 	$result = runmysqlquery($query);                  
-	if(mysql_num_rows($result) > 1)
+	if(mysqli_num_rows($result) > 1)
 	{
 		echo('<option value="" selected="selected">Make a Selection</option>');
 	}
-	while($fetch = mysql_fetch_array($result))
+	while($fetch = mysqli_fetch_array($result))
 	{
 		echo('<option value="'.$fetch['department'].'">'.$fetch['department'].'</option>');
 	}

@@ -69,7 +69,7 @@ while($fetch = mysql_fetch_array($result1))
       <div>
         <div style="padding:2px;" align="justify">
           <div style="background-color:#009933; color:#ffffff; font-weight:bold; margin-bottom:1px; padding:2px; text-align:center">---- Flash News ----</div>
-          <? echo($grid);?><br />
+          <?php echo($grid);?><br />
         </div>
       </div>
     </div>

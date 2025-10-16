@@ -116,8 +116,8 @@ $grid .= '<table width="100%" border="0" align="center" cellpadding="4" cellspac
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
-<script type="text/javascript" src="functions/customerdetails.js?dummy= <? echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
+<script type="text/javascript" src="functions/customerdetails.js?dummy= <?php echo (rand());?>"></script>
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="images/relyon-rupee-small.jpg" height="15" width="16" align="absmiddle">');
@@ -155,7 +155,7 @@ a {
   <td  colspan="2">&nbsp;</td>
 </tr>
 <tr>
-  <td colspan="2"><? include('inc/header.php') ?></td>
+	<td colspan="2"><?php include('inc/header.php') ?></td>
 </tr>
 <tr>
   <td colspan="2">&nbsp;</td>
@@ -191,7 +191,7 @@ a {
                     <td style="font-size:12px;"><font color="#FF0000">* Additional 18% GST applicable</font></td>
                   </tr>
                   <tr>
-                    <td><? echo($grid);?></td>
+					<td><?php echo($grid);?></td>
                   </tr>
                   
                    <tr>
@@ -227,7 +227,7 @@ a {
       <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><? include('inc/footer.php') ?></td>
+	<td><?php include('inc/footer.php') ?></td>
       </tr>
     </table></form>
 </body>

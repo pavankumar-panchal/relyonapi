@@ -31,7 +31,7 @@ include('../functions/phpfunctions.php');
 <title>Relyon Softech Ltd - Payement Status</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
 
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="images/relyonweb-rupee-symbol.jpg" height="15" width="16" align="absmiddle">');
@@ -62,7 +62,7 @@ cursor: pointer;
 text-decoration:none;  
 } 
 
-}
+ 
 </style>
 </head>
 <body>
@@ -73,9 +73,9 @@ text-decoration:none;
   <input type="hidden" name="amount" value="<?php echo $amount;?>">  
   <input type="hidden" name="slno" value="<?php echo $lsno;?>">
   <input type="hidden" name="transid" value="<?php echo $transid;?>">  
-  <input type="hidden" name="ePGTxnID" value="<? echo (rand());?>">  
-  <input type="hidden" name="AuthIdCode" value="<? echo (rand());?>">  
-  <input type="hidden" name="RRN" value="? echo (rand());?>">  
-  <input type="hidden" name="CVRespCode" value="<? echo (rand());?>">  
+  <input type="hidden" name="ePGTxnID" value="<?php echo (rand());?>">  
+  <input type="hidden" name="AuthIdCode" value="<?php echo (rand());?>">  
+  <input type="hidden" name="RRN" value="<?php echo (rand());?>">  
+  <input type="hidden" name="CVRespCode" value="<?php echo (rand());?>">  
   <input type="submit" value="Submit">
 </form>

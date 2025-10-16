@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_registration <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -9,7 +9,7 @@ else
 ?>
 <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script src="../functions/jquery-ui.min.js"></script>
-<script src="../functions/register_user.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/register_user.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -201,4 +201,4 @@ $(document).ready(function()
       </form></td>
   </tr>
 </table>
-<? }?>
+<?php }?>

@@ -5,6 +5,8 @@
 	$dbuserpassword="cd4017";
 	//$default_dbname="spp_jandj";
 	$default_dbname="relyon_imax";
+	// Hold the active mysqli link for error reporting
+	$DB_LINK = null;
 	
 	date_default_timezone_set('Asia/Calcutta');
 
@@ -14,38 +16,52 @@
 	function db_connect($dbname="")
 	{
 		global $dbhost, $dbusername, $dbuserpassword, $default_dbname;
-		global $MYSQL_ERRNO, $MYSQL_ERROR;
-		
-		$link_id=mysql_connect($dbhost,$dbusername,$dbuserpassword);
+		global $MYSQL_ERRNO, $MYSQL_ERROR, $DB_LINK;
+
+		$link_id = @mysqli_connect($dbhost, $dbusername, $dbuserpassword);
 		if(!$link_id)
 		{
-			$MYSQL_ERRNO=0;
-			$MYSQL_ERROR='Connection failed to the host $dbhost.';
+			// Preserve original behavior/message
+			$MYSQL_ERRNO = 0;
+			$MYSQL_ERROR = 'Connection failed to the host $dbhost.';
 			return 0;
 		}
-		else if(empty($dbname) && !mysql_select_db($default_dbname))
+
+		// store the link globally for subsequent error checks
+		$DB_LINK = $link_id;
+
+		if(empty($dbname) && !@mysqli_select_db($link_id, $default_dbname))
 		{
-			$MYSQL_ERRNO=mysql_errno();
-			$MYSQL_ERROR=mysql_errno();
-			return 0;			
-		}
-		else if(!empty($dbname) && !mysql_select_db($dbname))
-		{
-			$MYSQL_ERRNO=mysql_error();
-			$MYSQL_ERROR=mysql_error();
+			// Match original semantics: set both to errno
+			$MYSQL_ERRNO = mysqli_errno($link_id);
+			$MYSQL_ERROR = mysqli_errno($link_id);
 			return 0;
-		}		
-		else return $link_id;
+		}
+		else if(!empty($dbname) && !@mysqli_select_db($link_id, $dbname))
+		{
+			// Match original semantics: set both to error string
+			$MYSQL_ERRNO = mysqli_error($link_id);
+			$MYSQL_ERROR = mysqli_error($link_id);
+			return 0;
+		}
+		else {
+			return $link_id;
+		}
 	}
 	
 	function sql_error()
 	{
-		global $MYSQL_ERRNO, $MYSQL_ERROR;
+		global $MYSQL_ERRNO, $MYSQL_ERROR, $DB_LINK;
 		
 		if(empty($MYSQL_ERROR))
 		{
-			$MYSQL_ERRNO=mysql_errno();
-			$MYSQL_ERROR=mysql_error();
+			if($DB_LINK) {
+				$MYSQL_ERRNO = mysqli_errno($DB_LINK);
+				$MYSQL_ERROR = mysqli_error($DB_LINK);
+			} else {
+				$MYSQL_ERRNO = mysqli_connect_errno();
+				$MYSQL_ERROR = mysqli_connect_error();
+			}
 		}
 		return "$MYSQL_ERRNO : $MYSQL_ERROR";
 	}

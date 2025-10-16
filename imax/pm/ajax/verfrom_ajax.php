@@ -79,7 +79,7 @@ switch($submittype)
 							  </tr>';
 			}
 			 $result = runmysqlquery($query);
-			$fetchresultcount = mysql_num_rows($result);
+			$fetchresultcount = mysqli_num_rows($result);
 			
 			$addlimit = " LIMIT ".$startlimit.",".$limit.";";
 			
@@ -87,7 +87,7 @@ switch($submittype)
 			$result1 = runmysqlquery($query1);
 			if($fetchresultcount > 0)
 			{
-			  while($fetch = mysql_fetch_row($result1))
+			  while($fetch = mysqli_fetch_row($result1))
 			  {
 				  $slnocount++;
 				  //Begin a row
@@ -147,7 +147,7 @@ switch($submittype)
 			}
 			
 			$k = 0;
-			while($fetch2 = mysql_fetch_row($result))
+			while($fetch2 = mysqli_fetch_row($result))
 			{
 			  
 			  for($i = 0; $i < count($fetch2); $i++)
@@ -221,11 +221,11 @@ switch($submittype)
 				else
                     $qry3 ="SELECT * FROM prdupdate WHERE prdcode!='410' and product='".$form_product."' AND verfrom BETWEEN '".$form_verfrom."' AND '".$form_patch."'";
 				$result3 = runmysqlquery($qry3);
-				$num = mysql_num_rows($result3);
+				$num = mysqli_num_rows($result3);
 				$last = 1;
 				if($num >= 1)
 				{
-					while ($row = mysql_fetch_assoc($result3))
+					while ($row = mysqli_fetch_assoc($result3))
 					{
 						$form_slno=$row['slno'];
 						#echo "last num".$row['patchversion'] ."<br/>";
@@ -357,7 +357,7 @@ switch($submittype)
 			$slno = $_POST['slno'];
 				
 			
-			$slno = mysql_escape_String($slno);
+			$slno = mysqli_escape_String($slno);
 			
 			$query4 = "DELETE FROM prdupdate WHERE slno='".$slno."'";
 			$result4 = runmysqlquery($query4);
@@ -393,12 +393,12 @@ switch($submittype)
 select  patchversion as patch_verfrom from prdupdate where product='".$form_product."' and patchversion <>''ORDER BY patch_verfrom desc";
         }
 		$result_data = runmysqlquery($query3);
-		if(mysql_num_rows($result_data) > 1)
+		if(mysqli_num_rows($result_data) > 1)
 		{
 			$msg = "";
 			echo('<option value="" selected="selected"> Select a Version From</option>');
 		}
-		while($fetch = mysql_fetch_array($result_data))
+		while($fetch = mysqli_fetch_array($result_data))
 		{
 			#$msg= $fetch['patchversion'];
 			echo('<option value="'.$fetch['patch_verfrom'].'">'.$fetch['patch_verfrom'].'</option>');
@@ -412,7 +412,7 @@ select  patchversion as patch_verfrom from prdupdate where product='".$form_prod
 		$query5 = "select producturl from saral_products where productname='".$form_product."'";
 		$result5 = runmysqlquery($query5);
 		
-		$fetch = mysql_fetch_array($result5);
+		$fetch = mysqli_fetch_array($result5);
 		
 		$msg = $fetch['producturl'];
 		
@@ -432,12 +432,12 @@ select  patchversion as patch_verfrom from prdupdate where product='".$form_prod
 		else
 		$qry3 ="SELECT * FROM prdupdate WHERE product='".$form_product."' order by slno";
 		$result3 = runmysqlquery($qry3);
-		$num = mysql_num_rows($result3);
+		$num = mysqli_num_rows($result3);
 		$last = 1;
 		$ver = 1;
 		if($num >= 1)
 		{
-			while ($row = mysql_fetch_assoc($result3))
+			while ($row = mysqli_fetch_assoc($result3))
 			{
 					$form_slno=$row['slno'];
 					#echo "last Code ".$row['prdcode'] ."<br/>";

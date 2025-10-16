@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_saralmail_disable <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -11,7 +11,7 @@ else
 <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script src="../functions/jquery-ui.min.js"></script><!-- end of popup-->
 
-<script src="../functions/employee_disable.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/employee_disable.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -269,13 +269,13 @@ $("#forwardslist").click(function()
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <!-- <input name="new" type="reset" id="new" class="swiftchoicebutton" value="New"  onClick="newentry();document.getElementById('form-error').innerHTML='';document.getElementById('msg_box').innerHTML='';document.getElementById('form_emailid').value='';" />
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-         <? if($p_saralmail_delete == '1') {?> <input name="delete" type="button" class="swiftchoicebutton" id="delete" value="Delete" onClick="formsubmit('delete');" />
-		<?	}?>
+         <?php if($p_saralmail_delete == '1') {?> <input name="delete" type="button" class="swiftchoicebutton" id="delete" value="Delete" onClick="formsubmit('delete');" />
+		<?php	}?>
           </div></td>
       </tr>
     </table>
   </form></div></td>
   </tr></table>
-<?
+<?php
 }
 ?>

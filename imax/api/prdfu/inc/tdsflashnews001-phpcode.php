@@ -1,4 +1,4 @@
-<?
+<?php
 
 $rcidata = decodevalue($_GET['rj8kb5ns']);
 $deductorinfo = decodevalue($_GET['sladjf8s']);

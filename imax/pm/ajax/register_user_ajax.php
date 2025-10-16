@@ -139,7 +139,7 @@ switch($switchtype)
 		$result = runmysqlquery($query);
 		$grid = '';
 		$count = 1;
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			if($count > 1)
 			$grid .='^*^';
@@ -155,7 +155,7 @@ switch($switchtype)
 		$responsearray3 = array();
 		$query = "SELECT adminid,email,fname FROM saral_admins";
 		$result = runmysqlquery($query);
-		$count = mysql_num_rows($result);
+		$count = mysqli_num_rows($result);
 		$responsearray3['count'] = $count;
 		echo(json_encode($responsearray3));
 	}

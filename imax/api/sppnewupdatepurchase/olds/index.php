@@ -304,9 +304,9 @@ $grid .= '<tr>
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
-<script type="text/javascript" src="functions/paymode.js?dummy= <? echo (rand());?>"></script>
-<script type="text/javascript" src="functions/dashboard.js?dummy= <? echo (rand());?>"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
+<script type="text/javascript" src="functions/paymode.js?dummy= <?php echo (rand());?>"></script>
+<script type="text/javascript" src="functions/dashboard.js?dummy= <?php echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
 <script type="text/javascript">
  $(document).ready(function() {
 	 
@@ -413,7 +413,7 @@ a {
       <td  colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="2"><? include('inc/header.php') ?></td>
+	<td colspan="2"><?php include('inc/header.php') ?></td>
     </tr>
     <tr>
       <td colspan="2">&nbsp;</td>
@@ -428,7 +428,7 @@ a {
                 <tr>
                   <td class="content-mid"><table width="75%" border="0" cellspacing="0" cellpadding="0" align="center">
                       <tr>
-                        <td class="heading-font">Welcome <? echo($businessname);?>,</td>
+						<td class="heading-font">Welcome <?php echo($businessname);?>,</td>
                       </tr>
                       
                      
@@ -451,17 +451,17 @@ a {
         <tr>
           <td height="132px"><table width="270" border="0" cellpadding="4" cellspacing="0" class="dashboardprofilebox">
            <tr>
-                                <td ><? echo(gridtrim40($businessname));?></td>
+								<td ><?php echo(gridtrim40($businessname));?></td>
                               </tr>
                               <tr>
-                                <td><? echo(gridtrim40($contactperson));?></td>
+								<td><?php echo(gridtrim40($contactperson));?></td>
                               </tr>
                               <tr>
-                                <td><? echo(gridtrim40($place));?>, <? echo(gridtrim40($districtname));?>, <? echo(gridtrim40($statename));?></td>
+								<td><?php echo(gridtrim40($place));?>, <?php echo(gridtrim40($districtname));?>, <?php echo(gridtrim40($statename));?></td>
                               </tr>
                               
                               <tr>
-                                <td height="20px">Email:<? echo(gridtrim40($emailid));?></td>
+								<td height="20px">Email:<?php echo(gridtrim40($emailid));?></td>
                               </tr>
                               
           </table></td></tr>
@@ -474,14 +474,14 @@ a {
           <table width="270" border="0" cellpadding="4" cellspacing="0" class="dashboardprofilebox">
            
                               <tr>
-                                <td height="20px">Customer ID : <? echo(gridtrim40($customerid));?></td>
+								<td height="20px">Customer ID : <?php echo(gridtrim40($customerid));?></td>
                               </tr>
                               
                                <tr>
-                                <td height="20px">Dealer : <? echo(gridtrim40($currentdealer_name));?></td>
+								<td height="20px">Dealer : <?php echo(gridtrim40($currentdealer_name));?></td>
                               </tr>
                               <tr>
-                                <td>Phone: <? echo(gridtrim40($phone));?>, <? echo(gridtrim40($cell));?></td>
+								<td>Phone: <?php echo(gridtrim40($phone));?>, <?php echo(gridtrim40($cell));?></td>
                               </tr>
                               
                               
@@ -497,8 +497,8 @@ a {
                         <td colspan="2">&nbsp;</td>
                       </tr>
                       <tr>
-                        <td><? if($_GET['error'] <> '') { ?>
-                          <div class="errorbox"> <? echo('Invalid Entry.Please select the Product again.'); } ?></div></td>
+						<td><?php if($_GET['error'] <> '') { ?>
+						  <div class="errorbox"> <?php echo('Invalid Entry.Please select the Product again.'); } ?></div></td>
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
@@ -507,7 +507,7 @@ a {
                         <td style="font-size:12px; padding-left:91px"><font color="#FF0000">* Additional 15% Service Tax applicable</font></td>
                       </tr>
                       <tr>
-                        <td><? echo($grid);?></td>
+						<td><?php echo($grid);?></td>
                       </tr>
                       <tr>
                         <td>
@@ -549,7 +549,7 @@ a {
       </tr>
     
     <tr>
-      <td><? include('inc/footer.php') ?></td>
+	<td><?php include('inc/footer.php') ?></td>
     </tr>
   </table>
 </form>

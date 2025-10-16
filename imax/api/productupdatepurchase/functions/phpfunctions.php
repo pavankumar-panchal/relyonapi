@@ -9,6 +9,84 @@ elseif(file_exists("../../inc/dbconfig.php"))
 else
 	include('./inc/dbconfig.php');
 
+// PHP 8 compatibility shims for legacy mysql_*, ereg_*, split
+if (!function_exists('mysql_connect')) {
+	function mysql_connect($host = null, $user = null, $password = null)
+	{
+		$link = mysqli_connect($host, $user, $password);
+		if (!$link) {
+			die('Cannot connect to Mysql server host');
+		}
+		return $link;
+	}
+}
+if (!function_exists('mysql_select_db')) {
+	function mysql_select_db($dbname, $link_identifier = null)
+	{
+		return mysqli_select_db($link_identifier, $dbname);
+	}
+}
+if (!function_exists('mysql_query')) {
+	function mysql_query($query, $link_identifier = null)
+	{
+		return mysqli_query($link_identifier, $query);
+	}
+}
+if (!function_exists('mysql_fetch_array')) {
+	function mysql_fetch_array($result)
+	{
+		return mysqli_fetch_array($result, MYSQLI_BOTH);
+	}
+}
+if (!function_exists('mysql_fetch_row')) {
+	function mysql_fetch_row($result)
+	{
+		return mysqli_fetch_row($result);
+	}
+}
+if (!function_exists('mysql_fetch_assoc')) {
+	function mysql_fetch_assoc($result)
+	{
+		return mysqli_fetch_assoc($result);
+	}
+}
+if (!function_exists('mysql_num_rows')) {
+	function mysql_num_rows($result)
+	{
+		return mysqli_num_rows($result);
+	}
+}
+if (!function_exists('mysql_error')) {
+	function mysql_error($link_identifier = null)
+	{
+		return mysqli_error($link_identifier);
+	}
+}
+if (!function_exists('mysql_close')) {
+	function mysql_close($link_identifier = null)
+	{
+		if ($link_identifier) {
+			return mysqli_close($link_identifier);
+		}
+		return true;
+	}
+}
+if (!function_exists('ereg')) {
+	function ereg($pattern, $string)
+	{
+		$pattern = '/' . str_replace('/', '\/', $pattern) . '/';
+		return preg_match($pattern, $string);
+	}
+}
+if (!function_exists('split')) {
+	function split($pattern, $string)
+	{
+		if ($pattern === ' ') return explode(' ', $string);
+		$pattern = '/' . str_replace('/', '\/', $pattern) . '/';
+		return preg_split($pattern, $string);
+	}
+}
+
 //Connect to host
 $newconnection = mysql_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
 

@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_flashnewsupdate <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -7,7 +7,7 @@ else
 {
 	include("../inc/eventloginsert.php");
 ?>
-<script src="../functions/career.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/career.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <!--Start Of Editor -->
 
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css"/>
@@ -217,4 +217,4 @@ $(document).ready(function()
         </table></td>
     </tr>
   </table>
-<? }?>
+<?php }?>

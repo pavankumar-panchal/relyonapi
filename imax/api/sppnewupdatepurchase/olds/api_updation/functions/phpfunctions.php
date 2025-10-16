@@ -1,4 +1,4 @@
-<?
+<?php
 //Include Database Configuration details
 if(file_exists("../inc/dbconfig.php"))
 	include('../inc/dbconfig.php');
@@ -134,7 +134,8 @@ function runicicidbquery($query)
 //used in new registration api
 function WriteError($errorDescrption, $errodCode = 0)
 {
-	$erroroutput=$erroroutput .  "<ROOT>";	  
+	$erroroutput = '';
+	$erroroutput=$erroroutput .  "<ROOT>";
 	$erroroutput=$erroroutput .  "<ERROR>";
 	$erroroutput=$erroroutput .  "<CODE>" .$errodCode."</CODE>";
 	$erroroutput=$erroroutput .  "<DESC>" .$errorDescrption."</DESC>";
@@ -233,25 +234,25 @@ function getpagelink($linkvalue)
 {
 	switch($linkvalue)
 	{
-		case 'producttodealers':return '../main/producttodealers.php'; break;
-		case 'customer': return '../main/customer.php'; break;
-		case 'dealer': return '../main/dealer.php'; break;
-		case 'blockcancel': return '../cards/blockcancel.php'; break;
-		case 'transferpin': return '../cards/transferpin.php'; break;
-		case 'pindetails': return '../cards/pindetails.php'; break;
-		case 'product': return '../main/products.php'; break;
-		case 'usereditor': return '../usermanagement/usereditor.php'; break;
-		case 'bill': return '../main/bills.php'; break;
-		case 'home_dashboard': return '../home/dashboard.php'; break;
-		case 'mergecustomer': return '../main/mergecustomer.php'; break;
-		case 'cardsearch': return '../cards/cardsearch.php'; break;
-		case 'externalregistration': return '../external/index.php'; break;
-		case 'transfercards': return '../cards/transfer.php'; break;
-		case 'credits': return '../main/credit.php'; break;
-		case 'customeramc': return '../main/customeramc.php'; break;
-		case 'unauthorised': return '../usermanagement/unauthorised.php'; break;
-		case 'changepassword': return '../usermanagement/changepw.php'; break;
-		case 'registrationdetails': return '../reports/registration.php'; break;
+		case 'producttodealers':return '../main/producttodealers.php';
+		case 'customer': return '../main/customer.php';
+		case 'dealer': return '../main/dealer.php';
+		case 'blockcancel': return '../cards/blockcancel.php';
+		case 'transferpin': return '../cards/transferpin.php';
+		case 'pindetails': return '../cards/pindetails.php';
+		case 'product': return '../main/products.php';
+		case 'usereditor': return '../usermanagement/usereditor.php';
+		case 'bill': return '../main/bills.php';
+		case 'home_dashboard': return '../home/dashboard.php';
+		case 'mergecustomer': return '../main/mergecustomer.php';
+		case 'cardsearch': return '../cards/cardsearch.php';
+		case 'externalregistration': return '../external/index.php';
+		case 'transfercards': return '../cards/transfer.php';
+		case 'credits': return '../main/credit.php';
+		case 'customeramc': return '../main/customeramc.php';
+		case 'unauthorised': return '../usermanagement/unauthorised.php';
+		case 'changepassword': return '../usermanagement/changepw.php';
+		case 'registrationdetails': return '../reports/registration.php';
 		case 'invoicedetails': return '../reports/invoicedetails.php'; break;
 		case 'productshippeddetails': return '../reports/productshipped.php'; break;
 		case 'cusinteraction': return '../main/cusinteraction.php'; break;

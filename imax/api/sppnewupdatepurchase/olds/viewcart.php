@@ -13,7 +13,7 @@ $grid .= '<table width="100%" border="0" align="center" cellpadding="4" cellspac
 <td class="td-border-grid2" align ="center"><strong><font color="#FFFFFF">Net Amount</font></strong></td>
 </tr>';
 
-		$select_query = "select isac.slno as isacslno, isac.customerid as customerid from inv_spp_amc_customers isac inner join inv_spp_amc_pinv isap on isac.invoiceno = isap.invoiceno  where isap.slno = $_GET[productslno]";
+  $select_query = "select isac.slno as isacslno, isac.customerid as customerid from inv_spp_amc_customers isac inner join inv_spp_amc_pinv isap on isac.invoiceno = isap.invoiceno  where isap.slno = ".$_GET['productslno'];
 		$res_select = runmysqlqueryfetch($select_query);
 		$isacslno = $res_select['isacslno'];
 		$customerid = $res_select['customerid'];
@@ -27,7 +27,7 @@ $grid .= '<table width="100%" border="0" align="center" cellpadding="4" cellspac
                 $totalamount = '';
 
 		$counter = 1;
-		if(count($res_purchase) == 1)
+  if(mysql_num_rows($res_purchase) == 1)
 		{	
 			$color;
 			if($counter%2 == 0)
@@ -85,7 +85,7 @@ $totalamount = $rowtotal;
 	<td  width = "10%">&nbsp;</td>
 	<td  width = "45%" class="paymenttotfont"><div align="right">Total: <span  id="totalresult" >
 	</span>'.$totalamount.'.00(INR)</div></td></tr>
-	<tr><td colspan="3"><input type="hidden" name="lastslno" id="lastslno" value="'.$_GET[productslno].'"><input type="hidden" name="customerid" id="customerid" value="'.$customerid.'"><input type="hidden" name="new_lslnop" id="new_lslnop" value="">
+  <tr><td colspan="3"><input type="hidden" name="lastslno" id="lastslno" value="'.$_GET['productslno'].'"><input type="hidden" name="customerid" id="customerid" value="'.$customerid.'"><input type="hidden" name="new_lslnop" id="new_lslnop" value="">
 	<input type="hidden" name="productlist" id="productlist" value="'.$product_code.'"><input type="hidden" name="usagelist" id="usagelist" value="'.$usagelist.'"></td></tr></table>';
 
 	
@@ -96,8 +96,8 @@ $totalamount = $rowtotal;
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
-<script type="text/javascript" src="functions/customerdetails.js?dummy= <? echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
+<script type="text/javascript" src="functions/customerdetails.js?dummy= <?php echo (rand());?>"></script>
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="images/relyon-rupee-small.jpg" height="15" width="16" align="absmiddle">');
@@ -135,7 +135,7 @@ a {
   <td  colspan="2">&nbsp;</td>
 </tr>
 <tr>
-  <td colspan="2"><? include('inc/header.php') ?></td>
+  <td colspan="2"><?php include('inc/header.php') ?></td>
 </tr>
 <tr>
   <td colspan="2">&nbsp;</td>
@@ -171,7 +171,7 @@ a {
                     <td style="font-size:12px;"><font color="#FF0000">* Additional 15% Service Tax applicable</font></td>
                   </tr>
                   <tr>
-                    <td><? echo($grid);?></td>
+                    <td><?php echo($grid);?></td>
                   </tr>
                   
                    <tr>
@@ -207,7 +207,7 @@ a {
       <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><? include('inc/footer.php') ?></td>
+  <td><?php include('inc/footer.php') ?></td>
       </tr>
     </table></form>
 </body>

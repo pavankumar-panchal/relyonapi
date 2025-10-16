@@ -24,7 +24,7 @@ $defaulttodate = datetimelocal("d-m-Y");
 $query3 = "SELECT id,grouphead FROM email_grouphead ORDER BY grouphead";
 $result3 = runmysqlquery($query3);
 $groupheadselect = '<option value="" selected="selected">- - - - All - - - -</option>';
-while($fetch = mysql_fetch_array($result3))
+while($fetch = mysqli_fetch_array($result3))
 {
 	$groupheadselect .= '<option value="'.$fetch['id'].'">'.$fetch['grouphead'].'</option>';
 }
@@ -33,11 +33,11 @@ while($fetch = mysql_fetch_array($result3))
 $query = "SELECT distinct(forwards) FROM email_acc_record where (forwards != '' and !ISNULL(forwards)) ORDER BY forwards;";
 $result = runmysqlquery($query);
 $forwarderselect = '';
-if(mysql_num_rows($result) > 1)
+if(mysqli_num_rows($result) > 1)
 {
 	$forwarderselect .= '<option value="" selected="selected">- - - - All - - - -</option>';
 }
-while($fetch = mysql_fetch_array($result))
+while($fetch = mysqli_fetch_array($result))
 {
 	$forwarderselect .= '<option value="'.$fetch['forwards'].'">'.$fetch['forwards'].'</option>';
 }
@@ -46,12 +46,12 @@ while($fetch = mysql_fetch_array($result))
 $query6 = "select cid,category from email_mas_category order by category";
 $result6 = runmysqlquery($query6);
 $categoryselect .= '<option value="" selected="selected">- - - All - - - </option>';
-while($fetch6 = mysql_fetch_array($result6))
+while($fetch6 = mysqli_fetch_array($result6))
 {
 	$categoryselect .= '<option value="'.$fetch6['cid'].'">'.$fetch6['category'].'</option>';
 }
 ?>
-<script src="../functions/email_search.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/email_search.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -164,21 +164,21 @@ $(document).ready(function()
                       <td colspan="4"><table width="100%" border="0" cellspacing="0" cellpadding="4" style="border-bottom:1px solid #CCCCCC;color:#006699;">
                           <!-- <tr>
                             <td width="11%">From Date : </td>
-                            <td width="37%"><input name="fromdate" type="text" class="formfields" id="DPC_fromdate" size="20" maxlength="10" value="<?/* echo($date); */?>"  style="width:50%" />
+                            <td width="37%"><input name="fromdate" type="text" class="formfields" id="DPC_fromdate" size="20" maxlength="10" value="<?php /* echo($date); */ ?>"  style="width:50%" />
                               <input type="hidden" name="hiddenfromdate" id="hiddenfromdate" /></td>
                             <td width="13%">To Date : </td>
-                            <td width="39%"><input name="todate" type="text" class="formfields" id="DPC_todate" size="20" maxlength="10" value="<?/* echo($defaulttodate); */?>" style="width:50%" />
+                            <td width="39%"><input name="todate" type="text" class="formfields" id="DPC_todate" size="20" maxlength="10" value="<?php /* echo($defaulttodate); */ ?>" style="width:50%" />
                               <input type="hidden" name="hiddentodate" id="hiddentodate" /></td>
                           </tr>-->
                           <tr>
                             <td width="13%">Group Head : </td>
                             <td width="37%"><select name="groupheadselect" class="formfields" id="groupheadselect" style="width:50%">
-                                <? echo($groupheadselect);?>
+                                <?php echo($groupheadselect);?>
                               </select>
                               <input type="hidden" name="hiddengroupheadselect" id="hiddengroupheadselect" /></td>
                             <td width="13%">Forwarder: </td>
                             <td width="39%"><select name="forwarderselect" class="formfields" id="forwarderselect" style="width:50%">
-                                <? echo($forwarderselect);?>
+                                <?php echo($forwarderselect);?>
                               </select>
                               <input type="hidden" name="hiddenforwarderselect" id="hiddenforwarderselect" /></td>
                           </tr>
@@ -197,7 +197,7 @@ $(document).ready(function()
                               </td>
                             <td>Category:</td>
                             <td><select name="form_source" class="formfields" id="form_source" style="width:50%">
-                                <? echo($categoryselect);?>
+                                <?php echo($categoryselect);?>
                               </select>
                               <input type="hidden" name="hiddensource" id="hiddensource" /></td>
                           </tr>

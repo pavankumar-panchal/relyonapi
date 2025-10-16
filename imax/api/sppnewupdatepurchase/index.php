@@ -354,9 +354,9 @@ $grid.='</table>';
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
-<script type="text/javascript" src="functions/paymode.js?dummy= <? echo (rand());?>"></script>
-<script type="text/javascript" src="functions/dashboard.js?dummy= <? echo (rand());?>"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
+<script type="text/javascript" src="functions/paymode.js?dummy= <?php echo (rand());?>"></script>
+<script type="text/javascript" src="functions/dashboard.js?dummy= <?php echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
 <script type="text/javascript">
  $(document).ready(function() {
 	 
@@ -516,7 +516,7 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
                   <td class="content-top">&nbsp;</td>
                 </tr>
                    <tr>
-                      <td colspan="2" class="content-mid"><? include('inc/header.php') ?></td>
+                      <td colspan="2" class="content-mid"><?php include('inc/header.php') ?></td>
                   </tr>
                    <tr>
                       <td colspan="2" class="content-mid"><br><br><br></td>
@@ -524,7 +524,7 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
                 <tr>
                   <td class="content-mid"><table width="75%" border="0" cellspacing="0" cellpadding="0" align="center">
                       <tr>
-                        <td class="heading-font">Welcome <? echo($businessname);?>,</td>
+                        <td class="heading-font">Welcome <?php echo($businessname);?>,</td>
                       </tr>                      
                      
                       <tr>
@@ -546,25 +546,25 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
         <tr>
           <td height="172px"><table width="270" border="0" cellpadding="4" cellspacing="0" class="dashboardprofilebox">
            <tr>
-                                <td ><? echo(gridtrim40($businessname));?></td>
+                                <td ><?php echo(gridtrim40($businessname));?></td>
                               </tr>
 
                               <tr>
-                                <td height="20px">Customer ID : <? echo cusidcombine($customerid);?></td>
+                                <td height="20px">Customer ID : <?php echo cusidcombine($customerid);?></td>
                               </tr>
 
                               <tr>
-                                <td><? echo(gridtrim40($contactperson));?></td>
+                                <td><?php echo(gridtrim40($contactperson));?></td>
                               </tr>
                               <tr>
-                                <td><? echo(gridtrim40($place));?>, <? echo(gridtrim40($districtname));?>, <? echo(gridtrim40($statename));?></td>
+                                <td><?php echo(gridtrim40($place));?>, <?php echo(gridtrim40($districtname));?>, <?php echo(gridtrim40($statename));?></td>
                               </tr>
                               
                               <tr>
-                                <td height="20px">Email : <? echo(gridtrim40($emailid));?></td>
+                                <td height="20px">Email : <?php echo(gridtrim40($emailid));?></td>
                               </tr>
                               <tr>
-                                <td>Phone : <? echo(gridtrim40($phone));?>, <? echo(gridtrim40($cell));?></td>
+                                <td>Phone : <?php echo(gridtrim40($phone));?>, <?php echo(gridtrim40($cell));?></td>
                               </tr>
                               
           </table></td></tr>
@@ -577,13 +577,13 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
           <table width="270" border="0" cellpadding="4" cellspacing="0" class="dashboardprofilebox">           
                              
                                <tr>
-                                <td height="20px">Relyon Executive : <? echo(gridtrim40($dealername));?></td>
+                                <td height="20px">Relyon Executive : <?php echo(gridtrim40($dealername));?></td>
                               </tr>
                               <tr>
-                                <td>Email : <? echo(gridtrim40($currentdealer_email)); ?></td>
+                                <td>Email : <?php echo(gridtrim40($currentdealer_email)); ?></td>
                               </tr>
                               <tr>
-                                <td>Phone : <? echo(gridtrim40($currentdealer_phone)); echo " / "; echo(gridtrim40($currentdealer_cell)); ?></td>
+                                <td>Phone : <?php echo(gridtrim40($currentdealer_phone)); echo " / "; echo(gridtrim40($currentdealer_cell)); ?></td>
                               </tr>
                               
                               
@@ -596,8 +596,8 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
           </tr></table>
           </td></tr>
                       <tr>
-                        <td><? if($_GET['error'] <> '') { ?>
-                          <div class="errorbox"> <? echo('Invalid Entry.Please select the Product again.'); } ?></div></td>
+                        <td><?php if($_GET['error'] <> '') { ?>
+                          <div class="errorbox"> <?php echo('Invalid Entry.Please select the Product again.'); } ?></div></td>
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
@@ -606,7 +606,7 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
                         <td style="font-size:12px; padding-left:91px"><font color="#FF0000">* Additional 15% Service Tax applicable</font></td>
                       </tr> -->
                       <tr>
-                        <td><? echo($grid);?></td>
+                        <td><?php echo($grid);?></td>
                       </tr>
                       <tr>
                         <td>
@@ -665,7 +665,7 @@ Please DO NOT refresh the page, close the browser or go back. This may result in
       </tr>
     
     <tr>
-      <td><? include('inc/footer.php') ?></td>
+  <td><?php include('inc/footer.php') ?></td>
     </tr>
   </table>
 </form>

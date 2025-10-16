@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_grouphead <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -7,7 +7,7 @@ else
 {
 	include("../inc/eventloginsert.php");
 ?>
-<script src="../functions/grouphead.js?dummy=<? echo (rand());?>" language="javascript"> </script>
+<script src="../functions/grouphead.js?dummy=<?php echo (rand());?>" language="javascript"> </script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -92,4 +92,4 @@ $(document).ready(function()
   </table>
 
 
-<? }?>
+<?php }?>

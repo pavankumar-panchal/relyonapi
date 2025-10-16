@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 if((imaxgetcookie('sessionkind') <> false) && (imaxgetcookie('userid') <> false) && (imaxgetcookie('checkpermission') <> false))
 {
@@ -17,8 +17,6 @@ switch($cookie_logintype)
 		if($_SESSION['verificationid'] == '4563464364365')
 		{
 			ini_set('session.gc_maxlifetime',180);
-			ini_set('session.gc_probability',1);
-			ini_set('session.gc_divisor',1);
 			$sessionCookieExpireTime = 180;
 			session_start();
 			setcookie(session_name(), $_COOKIE[session_name()], time() + $sessionCookieExpireTime, "/");

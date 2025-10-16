@@ -45,7 +45,7 @@
 		{
 			$query = "SELECT * FROM saral_admins WHERE name = '".$username."' and disablelogin = '0'";
 			$result = runmysqlquery($query);
-			if(mysql_num_rows($result) > 0)
+			if(mysqli_num_rows($result) > 0)
 			{
 				$fetch = runmysqlqueryfetch($query);
 					

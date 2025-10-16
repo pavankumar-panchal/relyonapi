@@ -1,4 +1,4 @@
-<?
+<?php
 //Include Database Configuration details
 //if(file_exists("../../inc/common_db.inc.php"))
 	include('../../inc/common_db.inc.php');
@@ -157,6 +157,7 @@ function generatepwd()
 {
 	$charecterset0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	$charecterset1 = "1234567890";
+	$usrpassword = '';
 	for ($i=0; $i<4; $i++)
 	{
 		$usrpassword .= $charecterset0[rand(0, strlen($charecterset0))];
@@ -909,6 +910,7 @@ function sendregistrationemail($customerproductslno,$userid)
 	$bccmailid = $bccids.','.'bigmail@relyonsoft.com'; 
 	inserttologs($userid,$customerslno,$fromname,$fromemail,$emailid,null,$bccmailid ,$subject);		
 	
+			$bccids = '';
 }
 
 
@@ -1531,7 +1533,7 @@ function finalsplit($name)
 function firstletterupper($result_contact)
 {
 	$count = 0;
-	$contact = split(',',$result_contact);
+	$contact = explode(',',$result_contact);
 	$array = array_map('trim', $contact);
 	for($j=0;$j<count($array);$j++)
 	{
@@ -1541,6 +1543,7 @@ function firstletterupper($result_contact)
 		$var1 = strtoupper(substr($array[$j],0,1));
 		$char1[] = $var1.$res;
 	}
+	$result1 = '';
 	for($i=0;$i<count($char1);$i++)
 	{
 		if($count > 0)
@@ -2637,11 +2640,11 @@ function remove_duplicates($str)
   sort($results[0]);
 	//remove duplicate results by comparing it to the previous value
   $prev="";
-  while(list($key,$val)=each($results[0])) 
-  {
-    if($val==$prev) unset($results[0][$key]);
-    else $prev=$val;
-  }
+	foreach ($results[0] as $key => $val) 
+	{
+		if($val==$prev) unset($results[0][$key]);
+		else $prev=$val;
+	}
 	//process the array and return the remaining email addresses
   $str = "";
   foreach ($results[0] as $value)

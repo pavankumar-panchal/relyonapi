@@ -1,7 +1,8 @@
-<?
+
+<?php
 	include("../inc/eventloginsert.php");
 ?>
-<script src="../functions/edit_profile.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/edit_profile.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($){
 

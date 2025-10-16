@@ -144,7 +144,7 @@ switch($submittype)
 				<tbody>';
 			}
 			$result = runmysqlquery($query);
-			$fetchresultcount = mysql_num_rows($result);
+			$fetchresultcount = mysqli_num_rows($result);
 			
 			
 			$addlimit = " LIMIT ".$startlimit.",".$limit.";";
@@ -155,7 +155,7 @@ switch($submittype)
 			if($fetchresultcount > 0)
 			{
 				
-				while($fetch = mysql_fetch_row($result1))
+				while($fetch = mysqli_fetch_row($result1))
 				{
 					$slnocount++;
 					//class for delete
@@ -263,7 +263,7 @@ switch($submittype)
 			}
 			
 			$k = 0;
-			while($fetch2 = mysql_fetch_row($result))
+			while($fetch2 = mysqli_fetch_row($result))
 			{
 				
 				for($i = 0; $i < count($fetch2); $i++)

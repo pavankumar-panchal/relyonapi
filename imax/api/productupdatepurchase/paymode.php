@@ -11,8 +11,8 @@ if(rslgetcookie('customerid')!= '' && rslgetcookie('cuslastslno') != '' && rslge
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='js/jquery.min.js'></script>
-<script type="text/javascript" src="functions/paymode.js?dummy= <? echo (rand());?>"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<? echo (rand());?>">
+<script type="text/javascript" src="functions/paymode.js?dummy= <?php echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css?dummy=<?php echo (rand());?>">
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="images/relyonweb-rupee-symbol.jpg" height="15" width="16" align="absmiddle">');
@@ -42,8 +42,6 @@ a{
 cursor: pointer;
 text-decoration:none;  
 } 
-
-}
 </style>
 </head>
 <body>
@@ -53,7 +51,7 @@ text-decoration:none;
     <td  colspan="2">&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="2"><? include('inc/header.php') ?></td>
+  <td colspan="2"><?php include('inc/header.php') ?></td>
   </tr>
   <tr>
     <td colspan="2">&nbsp;</td>
@@ -90,7 +88,7 @@ text-decoration:none;
                   </tr> --><tr>
                   
                   <tr>
-                    <td ><label><input type="radio" id="paymode" name="paymode" value="internet" />&nbsp;Pay through Net Banking</label><br /></td></tr><tr><td>&nbsp;<input type="hidden" name="lslnop" id="lslnop" value="<? echo $_POST['lastslno']; ?>"></td>
+                    <td ><label><input type="radio" id="paymode" name="paymode" value="internet" />&nbsp;Pay through Net Banking</label><br /></td></tr><tr><td>&nbsp;<input type="hidden" name="lslnop" id="lslnop" value="<?php echo $_POST['lastslno']; ?>"></td>
                   </tr>
                     <td></td>
                   </tr><tr>
@@ -129,7 +127,7 @@ text-decoration:none;
       <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><? include('inc/footer.php') ?></td>
+  <td><?php include('inc/footer.php') ?></td>
       </tr>
     </table></form>
 </body>

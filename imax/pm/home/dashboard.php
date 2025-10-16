@@ -1,7 +1,7 @@
-<?
+<?php
 include("../inc/eventloginsert.php");
 ?>
-<script src="../functions/dashboard.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/dashboard.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -24,7 +24,7 @@ $(document).ready(function()
     <td valign="top" width="70%" style="border-right:dashed #999999 1px;">
     <table width="100%">
         <!-- Version / hotfix-->
-        <? if($p_versionupdate == '1' || $p_hotfixupdate == '1') {?>
+  <?php if($p_versionupdate == '1' || $p_hotfixupdate == '1') {?>
         <tr>
           <td style="padding:0"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #c7c9d2; border-top:none;">
               <tr style="cursor:pointer" onClick="showhide('version','toggleimg');">
@@ -40,13 +40,13 @@ $(document).ready(function()
                               <tr style="border-left:none; border-right:none;">
                                 <td style="padding:0; border:none;" width="26%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                     <? if($p_versionupdate == '1'){ ?>
+                                     <?php if($p_versionupdate == '1'){ ?>
                                       <td width="84px" align="center" id="tabgrouph3" onclick="gridtab2('3','tabgroup','version');" style="cursor:pointer" class="grid-active-tabclass">Version</td>
-                                      <? }else{ ?> <td width="84px" align="center">&nbsp;</td><? }?>
+                                      <?php }else{ ?> <td width="84px" align="center">&nbsp;</td><?php }?>
                                       <td width="2">&nbsp;</td>
-                                      <? if($p_hotfixupdate == '1'){ ?>
+                                      <?php if($p_hotfixupdate == '1'){ ?>
                                       <td width="84px" align="center" id="tabgrouph4" onclick="gridtab2('4','tabgroup','hotfix');" style="cursor:pointer" class="grid-tabclass">Hotfix</td>
-                                    	<? }else{ ?> <td width="84px" align="center">&nbsp;</td><? }?>
+                                      <?php }else{ ?> <td width="84px" align="center">&nbsp;</td><?php }?>
                                       <td width="2">&nbsp;</td>
                                       <td>&nbsp;</td>
                                     </tr>
@@ -82,10 +82,10 @@ $(document).ready(function()
         <tr>
           <td>&nbsp;</td>
         </tr>
-        <? }?>
+  <?php }?>
         <!-- Version / hotfix--> 
        
-        <?  if($p_saralmail == '1' || $p_saralmail_delete == '1' || $p_saralmail_disable == '1' ) {?>
+  <?php  if($p_saralmail == '1' || $p_saralmail_delete == '1' || $p_saralmail_disable == '1' ) {?>
         <!-- Saral Mail-->
         <tr>
           <td style="padding:0"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #c7c9d2; border-top:none;">
@@ -102,17 +102,17 @@ $(document).ready(function()
                               <tr style="border-left:none; border-right:none;">
                                 <td style="padding:0; border:none;" width="26%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                     <? if($p_saralmail == '1'){ ?>
+                                     <?php if($p_saralmail == '1'){ ?>
                                       <td width="84px" align="center" id="tabgroupgridh1" onclick="gridtab3('1','tabgroupgrid','active');" style="cursor:pointer" class="grid-active-tabclass">Active</td>
-                                      <? }else{ ?> <td width="84px" align="center">&nbsp;</td><? }?>
+                                      <?php }else{ ?> <td width="84px" align="center">&nbsp;</td><?php }?>
                                       <td width="2">&nbsp;</td>
-                                      <? if($p_saralmail_disable == '1'){ ?>
+                                      <?php if($p_saralmail_disable == '1'){ ?>
                                       <td width="84px" align="center" id="tabgroupgridh2" onclick="gridtab3('2','tabgroupgrid','disabled');" style="cursor:pointer" class="grid-tabclass">Disabled</td>
-                                      <? }else{ ?> <td width="84px" align="center">&nbsp;</td><? }?>
+                                      <?php }else{ ?> <td width="84px" align="center">&nbsp;</td><?php }?>
                                       <td width="2">&nbsp;</td>
-                                       <? if($p_saralmail_delete == '1'){ ?>
+                                       <?php if($p_saralmail_delete == '1'){ ?>
                                       <td width="84px" align="center" id="tabgroupgridh3" onclick="gridtab3('3','tabgroupgrid','deleted');" style="cursor:pointer" class="grid-tabclass">Deleted</td>
-                                      <? }else{ ?> <td width="84px" align="center">&nbsp;</td><? }?>
+                                      <?php }else{ ?> <td width="84px" align="center">&nbsp;</td><?php }?>
                                       <td width="2">&nbsp;</td>
                                       <td>&nbsp;</td>
                                     </tr>
@@ -155,11 +155,11 @@ $(document).ready(function()
         <tr>
           <td>&nbsp;</td>
         </tr>
-          <? }?>
+          <?php }?>
         <!-- Saral Mail--> 
         
         <!-- Flash News-->
-                <?  if($p_flashnewsupdate == '1') {?>
+                <?php  if($p_flashnewsupdate == '1') {?>
 
         <tr>
           <td style="padding:0"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #c7c9d2; border-top:none;">
@@ -215,11 +215,11 @@ $(document).ready(function()
         <tr>
           <td>&nbsp;</td>
         </tr>
-         <? }?>
+         <?php }?>
         <!-- Flash News--> 
         
         <!-- Job Required--> 
-          <?  if($p_career == '1') {?>
+          <?php  if($p_career == '1') {?>
 
         <tr>
   <td style="padding:0"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #c7c9d2; border-top:none;">
@@ -273,7 +273,7 @@ $(document).ready(function()
     </table></td>
 </tr>
 
-		   <? }?>
+       <?php }?>
         <!-- Job Required-->
         
       </table></td>

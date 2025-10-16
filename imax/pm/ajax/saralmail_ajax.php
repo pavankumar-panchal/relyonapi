@@ -447,7 +447,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 		$result = runmysqlquery($query);
 		$grid = '';
 		$count = 1;
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			if($count > 1)
 				$grid .='^*^';
@@ -463,7 +463,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 		$responsearray3 = array();
 		$query = "SELECT emailid,employee,employeeid FROM email_acc_record WHERE deleted='NO' and disable = '0' ORDER BY employee";
 		$result = runmysqlquery($query);
-		$count = mysql_num_rows($result);
+		$count = mysqli_num_rows($result);
 		$responsearray3['count'] = $count;
 		echo(json_encode($responsearray3));
 	}
@@ -490,7 +490,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 			$query1 ="SELECT * from email_acc_record where emailid = '".$form_emailid."'; ";
 			$resultfetch = runmysqlquery($query1);
 			$valuecount = 0;
-			while($fetchres = mysql_fetch_array($resultfetch))
+			while($fetchres = mysqli_fetch_array($resultfetch))
 			{
 				if($valuecount > 0)
 					$contactarray .= '****';
@@ -549,7 +549,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 			$query1 ="SELECT * from email_acc_record where (email = '".$searchemployeemail."' OR employeeid = '".$searchemployeemail."'); ";
 			$resultfetch = runmysqlquery($query1);
 			$valuecount = 0;
-			while($fetchres = mysql_fetch_array($resultfetch))
+			while($fetchres = mysqli_fetch_array($resultfetch))
 			{
 				if($valuecount > 0)
 					$contactarray .= '****';
@@ -683,7 +683,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 					<tbody>';
 				}
 				$result = runmysqlquery($query);
-				$fetchresultcount = mysql_num_rows($result);
+				$fetchresultcount = mysqli_num_rows($result);
 				
 				$addlimit = " LIMIT ".$startlimit.",".$limit.";";
 				
@@ -692,7 +692,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 				$result1 = runmysqlquery($query1);
 				if($fetchresultcount > 0)
 				{
-					while($fetch = mysql_fetch_row($result1))
+					while($fetch = mysqli_fetch_row($result1))
 					{
 						$slnocount++;
 						//Begin a row
@@ -757,7 +757,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 				}
 				
 				$k = 0;
-				while($fetch2 = mysql_fetch_row($result))
+				while($fetch2 = mysqli_fetch_row($result))
 				{
 					for($i = 0; $i < count($fetch2); $i++)
 					{
@@ -845,7 +845,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 					<tbody>';
 				}
 				$result = runmysqlquery($query);
-				$fetchresultcount = mysql_num_rows($result);
+				$fetchresultcount = mysqli_num_rows($result);
 				
 				$addlimit = " LIMIT ".$startlimit.",".$limit.";";
 				
@@ -855,7 +855,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 				$i_n = '';
 				if($fetchresultcount > 0)
 				{
-					while($fetch = mysql_fetch_row($result1))
+					while($fetch = mysqli_fetch_row($result1))
 					{
 						$slnocount++;
 						//Begin a row
@@ -926,7 +926,7 @@ $query2 = "UPDATE email_acc_record SET email='".$form_email."', password='".$for
 				}
 				
 				$k = 0;
-				while($fetch2 = mysql_fetch_row($result))
+				while($fetch2 = mysqli_fetch_row($result))
 				{
 					for($i = 0; $i < count($fetch2); $i++)
 					{

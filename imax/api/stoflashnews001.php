@@ -133,7 +133,7 @@ a:hover {
 </head>
 <body >
 <div id="flashnews"><div>
-<div style="padding:2px" align="justify"><? echo($grid);?><br />
+<div style="padding:2px" align="justify"><?php echo($grid);?><br />
 </div></div></div>
 </body>
 </html>

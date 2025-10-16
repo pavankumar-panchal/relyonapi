@@ -95,8 +95,8 @@ $grid .= '<table width="100%" border="0" align="center" cellpadding="4" cellspac
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='../js/jquery.min.js'></script>
-<link rel="stylesheet" type="text/css" href="../css/style.css?dummy=<? echo (rand());?>">
-<script type="text/javascript" src="../functions/customerinvdetails.js?dummy= <? echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css?dummy=<?php echo (rand());?>">
+<script type="text/javascript" src="../functions/customerinvdetails.js?dummy= <?php echo (rand());?>"></script>
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="../images/relyon-rupee-small.jpg" height="15" width="16" align="absmiddle">');
@@ -163,7 +163,7 @@ a {
                     <td colspan="2">&nbsp;</td>
                   </tr>
                   <tr>
-                    <td colspan="2" class="heading-font"><? echo($businessname);?></td>
+                    <td colspan="2" class="heading-font"><?php echo ($businessname);?></td>
                   </tr>
                   <tr>
                     <td height="4px" colspan="2" class="blueline"></td>
@@ -176,7 +176,7 @@ a {
                   </tr>
                   
                   <tr>
-                    <td><? echo($grid);?></td>
+                    <td><?php echo ($grid);?></td>
                   </tr>
                   <?php 
 if($balance > 0)

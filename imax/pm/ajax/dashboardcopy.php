@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 include('../functions/phpfunctions.php');
 
@@ -71,7 +71,7 @@ switch($submittype)
 		$result = runmysqlquery($query);
 		
 		
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			$slnocount++;
 			
@@ -130,7 +130,7 @@ switch($submittype)
 		<tbody>';
 		
 		$result = runmysqlquery($query);
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			$slnocount++;
 			
@@ -191,7 +191,7 @@ switch($submittype)
 		$result = runmysqlquery($query);
 		
 		
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 		  $slnocount++;
 		 
@@ -252,7 +252,7 @@ switch($submittype)
 			  $result = runmysqlquery($query);
 			 
 			 
-				  while($fetch = mysql_fetch_array($result))
+				  while($fetch = mysqli_fetch_array($result))
 				  {
 					  $slnocount++;
 					 
@@ -352,7 +352,7 @@ switch($submittype)
 		echo "<br />p_versionupdate".$p_versionupdate."<br />p_saralmail_delete".$p_saralmail_delete;
 		echo "<br />p_saralmail".$p_saralmail."<br />p_saralmail_disable".$p_saralmail_disable;
 		echo "<br />p_career".$p_career;*/
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			//Begin a row
 			$disable = $fetch['disable'];

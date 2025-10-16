@@ -1,4 +1,4 @@
-<?
+<?php
 		
 	//$dbhost = "localhost"; $dbuser = "imaxtest";    $dbpwd = "RelyonImax@12#";      $dbname = "imaxtest";
 //$dbhost = "localhost"; $dbuser = "root";	$dbpwd = "";	$dbname = "relyon_imax";

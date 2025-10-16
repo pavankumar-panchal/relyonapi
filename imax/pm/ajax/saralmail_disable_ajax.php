@@ -313,7 +313,7 @@ switch($switchtype)
 		$result = runmysqlquery($query);
 		$grid = '';
 		$count = 1;
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			if($count > 1)
 				$grid .='^*^';
@@ -329,7 +329,7 @@ switch($switchtype)
 		$responsearray3 = array();
 		$query1 = "SELECT emailid,employee,employeeid FROM email_acc_record WHERE disable='1' ORDER BY employee";
 		$result1 = runmysqlquery($query1);
-		$count = mysql_num_rows($result1);
+		$count = mysqli_num_rows($result1);
 		$responsearray3['count'] = $count;
 		echo(json_encode($responsearray3));
 	}
@@ -358,7 +358,7 @@ switch($switchtype)
 			$query1 ="SELECT * from email_acc_record where emailid = '".$form_emailid."'";
 			$resultfetch = runmysqlquery($query1);
 			$valuecount = 0;
-			while($fetchres = mysql_fetch_array($resultfetch))
+			while($fetchres = mysqli_fetch_array($resultfetch))
 			{
 				if($valuecount > 0)
 					$contactarray .= '****';
@@ -458,7 +458,7 @@ switch($switchtype)
 					<tbody>';
 				}
 				$result = runmysqlquery($query);
-				$fetchresultcount = mysql_num_rows($result);
+				$fetchresultcount = mysqli_num_rows($result);
 				
 				$addlimit = " LIMIT ".$startlimit.",".$limit.";";
 				
@@ -468,7 +468,7 @@ switch($switchtype)
 				$i_n = '';
 				if($fetchresultcount > 0)
 				{
-					while($fetch = mysql_fetch_row($result1))
+					while($fetch = mysqli_fetch_row($result1))
 					{
 						$slnocount++;
 						//Begin a row
@@ -539,7 +539,7 @@ switch($switchtype)
 				}
 				
 				$k = 0;
-				while($fetch2 = mysql_fetch_row($result))
+				while($fetch2 = mysqli_fetch_row($result))
 				{
 					for($i = 0; $i < count($fetch2); $i++)
 					{

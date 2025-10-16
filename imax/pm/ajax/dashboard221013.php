@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 include('../functions/phpfunctions.php');
 
@@ -62,7 +62,7 @@ switch($submittype)
 		$result = runmysqlquery($query);
 		
 		
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			$slnocount++;
 			
@@ -116,7 +116,7 @@ switch($submittype)
 		<tbody>';
 		
 		$result = runmysqlquery($query);
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			$slnocount++;
 			
@@ -172,7 +172,7 @@ switch($submittype)
 		$result = runmysqlquery($query);
 		
 		
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 		  $slnocount++;
 		 
@@ -230,7 +230,7 @@ switch($submittype)
 			  $result = runmysqlquery($query);
 			 
 			 
-				  while($fetch = mysql_fetch_array($result))
+				  while($fetch = mysqli_fetch_array($result))
 				  {
 					  $slnocount++;
 					 
@@ -342,7 +342,7 @@ switch($submittype)
 		$result = runmysqlquery($query);
 		
 		$slno = 1;
-		while($fetch = mysql_fetch_array($result))
+		while($fetch = mysqli_fetch_array($result))
 		{
 			//Begin a row
 			$disable = $fetch['disable'];

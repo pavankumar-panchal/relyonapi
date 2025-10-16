@@ -73,7 +73,7 @@ switch($submittype)
 				  <tbody>';
 			  }
 			  $result = runmysqlquery($query);
-			  $fetchresultcount = mysql_num_rows($result);
+			  $fetchresultcount = mysqli_num_rows($result);
 			  
 			  $addlimit = " LIMIT ".$startlimit.",".$limit.";";
 			  
@@ -82,7 +82,7 @@ switch($submittype)
 			  $result1 = runmysqlquery($query1);
 			  if($fetchresultcount > 0)
 			  {
-				  while($fetch = mysql_fetch_row($result1))
+				  while($fetch = mysqli_fetch_row($result1))
 				  {
 					  $slnocount++;
 					 
@@ -141,7 +141,7 @@ switch($submittype)
 			}
 			  
 			  $k = 0;
-			  while($fetch2 = mysql_fetch_row($result))
+			  while($fetch2 = mysqli_fetch_row($result))
 			  {
 				  
 				  for($i = 0; $i < count($fetch2); $i++)
@@ -264,7 +264,7 @@ switch($submittype)
 		{
 			$flashid = $_POST["flashid"];
 					
-			$flashid = mysql_escape_String($flashid);
+			$flashid = mysqli_escape_String($flashid);
 
 			$query4 = "DELETE FROM saral_flashnews WHERE slno='".$flashid."'";
 			

@@ -210,7 +210,7 @@ if($ResponseCode == 0) //Success
 
 <body onkeydown="return (event.keyCode != 116)">
     <form method="post" name="submitform" id="submitform">
-        <? if($ResponseCode == 0) { ?>
+    <?php if($ResponseCode == 0) { ?>
         <div class="container">
             
                   <div class="row marketing">
@@ -223,13 +223,13 @@ if($ResponseCode == 0) //Success
                         <div>
                         <center>  
                         <h4>Success - your Transaction is Successful!</h4>
-                        <h5>Transaction Id: <? echo($TxnID); ?></h5>
+                        <h5>Transaction Id: <?php echo($TxnID); ?></h5>
                         <hr />  
                         </div>
                         </center>
                         <div>
                             <p>
-                            You have successfully paid <i class="fa fa-inr" aria-hidden="true"></i><b><? echo($amount.'.00')?></b> . An email also have been sent to <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<b><? echo wordwrap(($emailid),35,"<br>\n",TRUE)?></b> with the confirmation.
+                            You have successfully paid <i class="fa fa-inr" aria-hidden="true"></i><b><?php echo($amount.'.00')?></b> . An email also have been sent to <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<b><?php echo wordwrap(($emailid),35,"<br>\n",TRUE)?></b> with the confirmation.
                             </p>
                             <p>The details of the software Purchased Transaction is as below:</p>
                         </div>
@@ -241,11 +241,11 @@ if($ResponseCode == 0) //Success
                                     </tr>  
                                      <tr class="success">
                                         <td><strong>Razorpay Transaction reference Number:</strong></td>
-                                        <td><? echo($ePGTxnID); ?></td>
+                                        <td><?php echo($ePGTxnID); ?></td>
                                     </tr>  
                                      <tr class="success">
                                         <td><strong>Authorization ID</strong></td>
-                                        <td><? echo($AuthIdCode) ?></td>
+                                        <td><?php echo($AuthIdCode) ?></td>
                                     </tr>  
                                 </tbody>
                         </table>
@@ -273,7 +273,7 @@ if($ResponseCode == 0) //Success
                          
                      </div>
                  </div> 
-        <? }else{?>
+    <?php }else{?>
          <div class="container">
             
                   <div class="row marketing">
@@ -286,7 +286,7 @@ if($ResponseCode == 0) //Success
                         <div>
                         <center>  
                         <h4>Failure - Your Transaction has Failed!</h4>
-                        <h5>Transaction Id: <? echo($TxnID); ?></h5>
+                        <h5>Transaction Id: <?php echo($TxnID); ?></h5>
                         <hr />  
                         </div>
                         </center>
@@ -304,7 +304,7 @@ if($ResponseCode == 0) //Success
             
                 </div> 
  
-    <? }?>
+    <?php }?>
 </form>
 </body>
 </html>

@@ -8,8 +8,8 @@ include('functions/phpfunctions.php');
 <meta charset="utf-8">
 <title>Relyon Softech Ltd - Buy Online</title>
 <script type='text/javascript' src='../js/jquery.min.js'></script>
-<script type="text/javascript" src="../functions/payinvmode.js?dummy= <? echo (rand());?>"></script>
-<link rel="stylesheet" type="text/css" href="../css/style.css?dummy=<? echo (rand());?>">
+<script type="text/javascript" src="../functions/payinvmode.js?dummy= <?php echo (rand());?>"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css?dummy=<?php echo (rand());?>">
 <script>
 $(document).ready(function() {
 $('#totalresult').empty().append('<img src="../images/relyonweb-rupee-symbol.jpg" height="15" width="16" align="absmiddle">');
@@ -40,7 +40,6 @@ cursor: pointer;
 text-decoration:none;  
 } 
 
-}
 </style>
 </head>
 <body>
@@ -96,7 +95,7 @@ text-decoration:none;
                   </tr> --><tr>
                   
                   <!-- <tr>
-                    <td ><label><input type="radio" id="paymode" name="paymode" value="internet" />&nbsp;Pay through Net Banking</label><br /></td></tr><tr><td>&nbsp;<input type="hidden" name="lslnop" id="lslnop" value="<? echo $_POST['lastslno']; ?>"><input type="hidden" name="balanceamt" id="balanceamt" value="<? echo $_POST['balanceamt']; ?>"></td>
+                    <td ><label><input type="radio" id="paymode" name="paymode" value="internet" />&nbsp;Pay through Net Banking</label><br /></td></tr><tr><td>&nbsp;<input type="hidden" name="lslnop" id="lslnop" value="<?php echo $_POST['lastslno']; ?>"><input type="hidden" name="balanceamt" id="balanceamt" value="<?php echo $_POST['balanceamt']; ?>"></td>
                   </tr> -->
                     <td></td>
                   </tr><tr>

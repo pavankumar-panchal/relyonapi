@@ -48,7 +48,7 @@ switch($submittype)
 					<tbody>';
 			  
 			  $result = runmysqlquery($query);
-			  while($fetch = mysql_fetch_row($result))
+			  while($fetch = mysqli_fetch_row($result))
 			  {
 				 $slnocount++;
 				  //Begin a row
@@ -188,7 +188,7 @@ switch($submittype)
 			
 			$form_url = $_POST['form_url'];
 			
-			$pid = mysql_escape_String($pid);
+			$pid = mysqli_escape_String($pid);
 			
 			$query4 = "DELETE FROM saral_update WHERE pid='".$pid."'";
 			$result4 = runmysqlquery($query4);
@@ -228,14 +228,14 @@ switch($submittype)
             select  patchversion as patch_verfrom from prdupdate where product='" . $form_product . "' and patchversion <>''ORDER BY patch_verfrom desc";
         }
 		$result_data = runmysqlquery($query3);
-		$lastrow = mysql_num_rows($result_data);
+		$lastrow = mysqli_num_rows($result_data);
 		if($lastrow > 1)
 		{
 			echo('<option value=""> Select a Version From </option>');
 		}
 		$msg = "";
 		$j=1;
-		while($fetch = mysql_fetch_array($result_data))
+		while($fetch = mysqli_fetch_array($result_data))
 		{
 		
 			$msg= $fetch['patch_verfrom'];
@@ -258,7 +258,7 @@ switch($submittype)
 		$query5 = "select producturl from saral_products where productname='".$form_product."'";
 		$result5 = runmysqlquery($query5);
 		
-		$fetch = mysql_fetch_array($result5);
+		$fetch = mysqli_fetch_array($result5);
 		
 		$msg = $fetch['producturl'];
 		

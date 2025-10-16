@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_productmaster <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -7,7 +7,7 @@ else
 {
 	include("../inc/eventloginsert.php");
 ?>
-<script src="../functions/pm.js?dummy=<? echo (rand());?>" language="javascript"> </script>
+<script src="../functions/pm.js?dummy=<?php echo (rand());?>" language="javascript"> </script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -84,4 +84,4 @@ $(document).ready(function()
     </tr>
   </table>
 
-<? }?>
+<?php }?>

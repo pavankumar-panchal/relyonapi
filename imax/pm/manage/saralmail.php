@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_saralmail <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -9,7 +9,7 @@ else
 ?>
 <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script src="../functions/jquery-ui.min.js"></script><!-- end of popup-->
-<script src="../functions/employee.js?dummy=<? echo (rand());?>" language="javascript"></script>
+<script src="../functions/employee.js?dummy=<?php echo (rand());?>" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -131,9 +131,9 @@ $("#forwardslist").click(function()
             <td valign="top">
             <span id="pass"><input name="form_password" type="text" class="textfield" id="form_password" placeholder="Double click here for random number" onDblClick="randompassword('form_password');" size="34" readonly></span>
               &nbsp;&nbsp;
-              <? if($p_saralmail_resetpass == '1') {?>
+              <?php if($p_saralmail_resetpass == '1') {?>
               <a id="genpass" name="genpass" title="Reset Password" onClick="viewdialogbox('#changepassword');" style="cursor:pointer; font-size:12px; color:#FF4040;font-family: Verdana, Geneva, sans-serif;">Reset Password</a>
-              <? }?>
+              <?php }?>
               
               <!--           <img src="./images/search.gif" width="16" id="genpass" name="genpass" height="15" title="Reset Password" align="absmiddle" onDblClick="resetpass();" style="cursor:pointer" />
 --></td>
@@ -319,4 +319,4 @@ $("#forwardslist").click(function()
       </form></td>
   </tr>
 </table>
-<? }?>
+<?php }?>

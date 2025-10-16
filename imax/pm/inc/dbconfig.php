@@ -1,4 +1,4 @@
-<?
+<?php
 	//Define the connection parameters - MySQL
 	if($_SERVER['HTTP_HOST'] == "bhavesh" || $_SERVER['HTTP_HOST'] == "192.168.2.132")
 	{
