@@ -1,4 +1,4 @@
-<?
+<?php
 //Include Database Configuration details
 if(file_exists("../inc/dbconfig.php"))
   include('../inc/dbconfig.php');
@@ -8,12 +8,12 @@ else
   include('./inc/dbconfig.php');
 
 //Connect to host
-$newconnection = mysql_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
+$newconnection = mysqli_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
 
-//$newconnection_log = mysql_connect($dbhost_log, $dbuser_log, $dbpwd_log) or die("Cannot connect to Mysql server host");
+//$newconnection_log = mysqli_connect($dbhost_log, $dbuser_log, $dbpwd_log) or die("Cannot connect to Mysql server host");
 
 
-//$newconnection_old = mysql_connect($dbhost_old, $dbuser_old, $dbpwd_old) or die("Cannot connect to Mysql server host");
+//$newconnection_old = mysqli_connect($dbhost_old, $dbuser_old, $dbpwd_old) or die("Cannot connect to Mysql server host");
 
 /* -------------------- Get local server time [by adding 5.30 hours] -------------------- */
 function datetimelocal($format)
@@ -35,10 +35,10 @@ function runmysqlquery($query)
   }
 
   //Connect to Database
-  mysql_select_db($dbname,$newconnection) or die("Cannot connect to database");
+  mysqli_select_db($newconnection,$dbname) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection) or die(" run Query Failed in Runquery function1.".$query); //;
+  $result = mysqli_query($newconnection,$query) or die(" run Query Failed in Runquery function1.".$query); //;
   
   //Return the result
   return $result;
@@ -55,10 +55,10 @@ function runmysqlquery_log($query)
   $dbname_log = 'relyon_imax';
   
   //Connect to Database
-  mysql_select_db($dbname_log,$newconnection_log) or die("Cannot connect to database");
+  mysqli_select_db($newconnection_log,$dbname_log) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection_log) or die(" run Query Failed in Runquery function2.".$query); //;
+  $result = mysqli_query($newconnection_log,$query) or die(" run Query Failed in Runquery function2.".$query); //;
   
   //Return the result
   return $result;
@@ -79,10 +79,10 @@ function runmysqlquery_old($query)
   }
 
   //Connect to Database
-  mysql_select_db($dbname_old,$newconnection_old) or die("Cannot connect to database");
+  mysqli_select_db($newconnection_old,$dbname_old) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection_old) or die(" run Query Failed in Runquery function3.".$query); //;
+  $result = mysqli_query($newconnection_old,$query) or die(" run Query Failed in Runquery function3.".$query); //;
   
   //Return the result
   return $result;
@@ -100,13 +100,13 @@ function runmysqlqueryfetch($query)
   }
 
   //Connect to Database
-  mysql_select_db($dbname,$newconnection) or die("Cannot connect to database");
+  mysqli_select_db($newconnection,$dbname) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection) or die(" run Query Failed in Runquery function5.".$query); //;
+  $result = mysqli_query($newconnection,$query) or die(" run Query Failed in Runquery function5.".$query); //;
   
   //Fetch the Query to an array
-  $fetchresult = mysql_fetch_array($result) or die("Cannot fetch the query result.".$query);
+  $fetchresult = mysqli_fetch_array($result) or die("Cannot fetch the query result.".$query);
   
   //Return the result
   return $fetchresult;
@@ -126,13 +126,13 @@ function runmysqlqueryfetch_log($query)
   }
 
   //Connect to Database
-  mysql_select_db($dbname_log,$newconnection_log) or die("Cannot connect to database");
+  mysqli_select_db($newconnection_log,$dbname_log) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection_log) or die(" run Query Failed in Runquery function6.".$query); //;
+  $result = mysqli_query($newconnection_log,$query) or die(" run Query Failed in Runquery function6.".$query); //;
   
   //Fetch the Query to an array
-  $fetchresult = mysql_fetch_array($result) or die("Cannot fetch the query result.".$query);
+  $fetchresult = mysqli_fetch_array($result) or die("Cannot fetch the query result.".$query);
   
   //Return the result
   return $fetchresult;
@@ -153,13 +153,13 @@ function runmysqlqueryfetch_old($query)
   }
 
   //Connect to Database
-  mysql_select_db($dbname_old,$newconnection_old) or die("Cannot connect to database");
+  mysqli_select_db($newconnection_old,$dbname_old) or die("Cannot connect to database");
   set_time_limit(3600);
   //Run the query
-  $result = mysql_query($query,$newconnection_old) or die(" run Query Failed in Runquery function7.".$query); //;
+  $result = mysqli_query($newconnection_old,$query) or die(" run Query Failed in Runquery function7.".$query); //;
   
   //Fetch the Query to an array
-  $fetchresult = mysql_fetch_array($result) or die("Cannot fetch the query result.".$query);
+  $fetchresult = mysqli_fetch_array($result) or die("Cannot fetch the query result.".$query);
   
   //Return the result
   return $fetchresult;
@@ -171,10 +171,10 @@ function changedateformat($date)
 {
   if($date <> "0000-00-00")
   {
-    if(strpos($date, " "))
-    $result = split(" ",$date);
-    else
-    $result = split("[:./-]",$date);
+  if(strpos($date, " "))
+  $result = explode(" ",$date);
+  else
+  $result = preg_split("/[:.\/ -]/",$date);
     $date = $result[2]."-".$result[1]."-".$result[0];
   }
   else
@@ -190,11 +190,11 @@ function runicicidbquery($query)
    $icicidbname = "relyon_icici";
  
    //Connect to Database
-   mysql_select_db($icicidbname,$newconnection) or die("Cannot connect to database");
+  mysqli_select_db($newconnection,$icicidbname) or die("Cannot connect to database");
    set_time_limit(3600);
    
    //Run the query
-   $result = mysql_query($query,$newconnection) or die(mysql_error());
+  $result = mysqli_query($newconnection,$query) or die(mysqli_error($newconnection));
    
    //Return the result
    return $result;
@@ -204,7 +204,7 @@ function changetimeformat($time)
 {
   if($time <> "00:00:00")
   {
-    $result = split(":",$time);
+  $result = explode(":",$time);
     $time = $result[0].":".$result[1];
   }
   else
@@ -220,10 +220,10 @@ function changedateformatwithtime($date)
   {
     if(strpos($date, " "))
     {
-      $result = split(" ",$date);
+      $result = explode(" ",$date);
       if(strpos($result[0], "-"))
-        $dateonly = split("-",$result[0]);
-      $timeonly =split(":",$result[1]);
+        $dateonly = explode("-",$result[0]);
+      $timeonly = explode(":",$result[1]);
       $timeonlyhm = $timeonly[0].':'.$timeonly[1];
       $date = $dateonly[2]."-".$dateonly[1]."-".$dateonly[0]." ".'('.$timeonlyhm.')';
     }
@@ -242,9 +242,9 @@ function cusidsplit($customerid)
   if($strlen <> '17')
   {
     if(strpos($customerid, " "))
-    $result = split(" ",$customerid);
+  $result = explode(" ",$customerid);
     else
-    $result = split("[:./-]",$customerid);
+  $result = preg_split("/[:.\/ -]/",$customerid);
     $customerid = $result[0].$result[1].$result[2].$result[3];
   }
   /*else
@@ -268,13 +268,14 @@ function generatepwd()
 {
   $charecterset0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   $charecterset1 = "1234567890";
+  $usrpassword = '';
   for ($i=0; $i<4; $i++)
   {
-    $usrpassword .= $charecterset0[rand(0, strlen($charecterset0))];
+    $usrpassword .= $charecterset0[rand(0, strlen($charecterset0) - 1)];
   }
   for ($i=0; $i<4; $i++)
   {
-    $usrpassword .= $charecterset1[rand(0, strlen($charecterset1))];
+    $usrpassword .= $charecterset1[rand(0, strlen($charecterset1) - 1)];
   }
   return $usrpassword;
 }
@@ -698,37 +699,14 @@ function downloadfile($filelink)
 
 function checkemailaddress($email) 
 {
-  // First, we check that there's one @ symbol, and that the lengths are right
-  if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) 
-  {
-    // Email invalid because wrong number of characters in one section, or wrong number of @ symbols.
-    return false;
-  }
-  // Split it into sections to make life easier
-  $email_array = explode("@", $email);
-  $local_array = explode(".", $email_array[0]);
-  for ($i = 0; $i < sizeof($local_array); $i++) 
-  {
-    if (!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$", $local_array[$i])) 
-    {
-      return false;
-    }
-  }
-  if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) 
-  { 
-    // Check if domain is IP. If not, it should be valid domain name
-    $domain_array = explode(".", $email_array[1]);
-    if (sizeof($domain_array) < 2) 
-    {
-      return false; // Not enough parts to domain
-    }
-    for ($i = 0; $i < sizeof($domain_array); $i++) 
-    {
-      if (!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$", $domain_array[$i])) 
-      {
-        return false;
-      }
-    }
+  if (strlen($email) < 3 || strlen($email) > 320) return false;
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
+  [$local, $domain] = explode('@', $email, 2);
+  if (preg_match('/^\[[0-9\.]+\]$/', $domain)) { return true; }
+  if (substr_count($domain, '.') < 1) return false;
+  $labels = explode('.', $domain);
+  foreach ($labels as $label) {
+    if (!preg_match('/^(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)$/', $label)) { return false; }
   }
   return true;
 }
@@ -805,7 +783,7 @@ function sendwelcomeemail($customerslno,$userid)
   $cellres = '';
   $emailidres = '';
       
-  while($fetchcontactdetails = mysql_fetch_array($resultcontactdetails))
+  while($fetchcontactdetails = mysqli_fetch_array($resultcontactdetails))
   {
     $contactperson = $fetchcontactdetails['contactperson'];
     $phone = $fetchcontactdetails['phone'];
@@ -953,7 +931,7 @@ function sendregistrationemail($customerproductslno,$userid)
   $cellres = '';
   $emailidres = '';
       
-  while($fetchcontactdetails = mysql_fetch_array($resultcontactdetails))
+  while($fetchcontactdetails = mysqli_fetch_array($resultcontactdetails))
   {
     $contactperson = $fetchcontactdetails['contactperson'];
     $emailid = $fetchcontactdetails['emailid'];
@@ -1206,7 +1184,7 @@ function sendpaymentreqemail($customerslno,$table,$userid)
   $cellres = '';
   $emailidres = '';
       
-  while($fetchcontactdetails = mysql_fetch_array($resultcontactdetails))
+  while($fetchcontactdetails = mysqli_fetch_array($resultcontactdetails))
   {
     $emailid = $fetchcontactdetails['emailid'];
     $emailidres .= $emailid;
@@ -1279,7 +1257,7 @@ function calculatesmsamount($quantity)
 {
   $query = 'select * from inv_sms_price;';
   $result = runmysqlquery_log($query);
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     if($quantity >= $fetch['smsfromquantity']  && $quantity <= $fetch['smstoquantity'])
     {
@@ -1338,7 +1316,7 @@ function generatepdfbill($firstbillnumber,$custreference,$onlineinvoiceno,$invoi
   $query1 = "select * from inv_customerreqpending where customerid = '".$custreference."' and inv_customerreqpending.customerstatus = 'Pending' and requestfrom = 'dealer_module';";
   $result1 = runmysqlquery($query1);
   
-  if(mysql_num_rows($result1) > 0)
+  if(mysqli_num_rows($result1) > 0)
   {
     $query = "select inv_customerreqpending.businessname as companyname,inv_customerreqpending.contactperson,inv_customerreqpending.phone,inv_customerreqpending.cell,inv_customerreqpending.emailid,inv_customerreqpending.place,inv_customerreqpending.address,inv_mas_region.category as region,inv_mas_branch.branchname as branchname,inv_mas_customercategory.businesstype,inv_mas_customertype.customertype,inv_mas_dealer.businessname as dealername,
 inv_customerreqpending.stdcode, inv_customerreqpending.pincode,inv_mas_district.districtname, inv_mas_state.statename,inv_mas_customer.customerid  from inv_mas_customer left join inv_customerreqpending on inv_customerreqpending.customerid = inv_mas_customer.slno left join inv_mas_dealer on inv_mas_dealer.slno = inv_mas_customer.currentdealer left join inv_mas_region on inv_mas_region.slno = inv_mas_customer.region left join inv_mas_branch on inv_mas_branch.slno = inv_mas_customer.branch left join inv_mas_district on inv_mas_district.districtcode = inv_mas_customer.district
@@ -1354,7 +1332,7 @@ left join inv_mas_customertype on inv_mas_customertype.slno = inv_mas_customer.t
   $querycontactdetails = "select customerid, GROUP_CONCAT(contactperson) as contactperson,  
 GROUP_CONCAT(phone) as phone, GROUP_CONCAT(cell) as cell, GROUP_CONCAT(emailid) as emailid from inv_contactdetails where customerid = '".$custreference."'  group by customerid ";
   $resultcontact = runmysqlquery($querycontactdetails);
-  $resultcontactdetails = mysql_fetch_array($resultcontact);
+  $resultcontactdetails = mysqli_fetch_array($resultcontact);
   //$resultcontactdetails = runmysqlqueryfetch($querycontactdetails);
   
   $contactvalues = removedoublecomma($resultcontactdetails['contactperson']);
@@ -1371,7 +1349,7 @@ left join inv_mas_product on inv_mas_product.productcode = inv_billdetail.produc
  where inv_billdetail.cusbillnumber = '".$firstbillnumber."';";
   $result2 = runmysqlquery($query2);
   
-  while($fetch2 = mysql_fetch_array($result2))
+  while($fetch2 = mysqli_fetch_array($result2))
   {
     for($i=0;$i<$fetch2['productquantity'];$i++)
     {
@@ -1409,7 +1387,7 @@ left join inv_mas_product on inv_mas_product.productcode = inv_billdetail.produc
     $offertypesplitcount = 0;
   else
     $offertypesplitcount = count($offertypesplit);
-  $resultcount = mysql_num_rows($result);
+  $resultcount = mysqli_num_rows($result);
   $linecount =  $resultcount + $offertypesplitcount + $offerremarkscount + $servicesplitcount;
   $addline1 = '';
   $addline = '';
@@ -1422,7 +1400,7 @@ left join inv_mas_product on inv_mas_product.productcode = inv_billdetail.produc
   $k = 0;
   $descriptioncount = 0;
   $servicetaxdesc = 'Service Tax Category: Information Technology Software (zzze), Support(zzzq), Training (zzc), Manpower(k), Salary Processing (22g), SMS Service (b)';
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $slno++;
     $grid .= '<tr>';
@@ -1657,7 +1635,7 @@ function smsactivationmail($slnoinserted,$userid)
 
 function finalsplit($name)
 {
-  $array[]= split(',',$name);
+  $array[]= explode(',',$name);
   for($j=0;$j<count($array);$j++)
   {
     $splitarray = $array[$j][0];
@@ -1668,7 +1646,7 @@ function finalsplit($name)
 function firstletterupper($result_contact)
 {
   $count = 0;
-  $contact = split(',',$result_contact);
+  $contact = explode(',',$result_contact);
   $array = array_map('trim', $contact);
   for($j=0;$j<count($array);$j++)
   {
@@ -1745,7 +1723,7 @@ function vieworgeneratepdfinvoice111($slno,$type)
   $appendzero = '.00';
   $grid .='<table width="100%" border="0" align="center" cellpadding="4" cellspacing="0" >';
   $grid .='<tr><td ><table width="100%" border="0" cellspacing="0" cellpadding="4" bordercolor="#CCCCCC" style="border:1px solid "><tr bgcolor="#CCCCCC"><td width="10%"><div align="center"><strong>Sl No</strong></div></td><td width="76%"><div align="center"><strong>Description</strong></div></td><td width="14%"><div align="center"><strong>Amount</strong></div></td></tr>';
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $description = $fetch['description'];
     $descriptionsplit = explode('*',$description);
@@ -1949,7 +1927,7 @@ function vieworgeneratepdfinvoice_backup($slno,$type)
   $appendzero = '.00';
   $grid .='<table width="100%" border="0" align="center" cellpadding="4" cellspacing="0" >';
   $grid .='<tr><td ><table width="100%" border="0" cellspacing="0" cellpadding="4" bordercolor="#CCCCCC" style="border:1px solid "><tr bgcolor="#CCCCCC"><td width="10%"><div align="center"><strong>Sl No</strong></div></td><td width="76%"><div align="center"><strong>Description</strong></div></td><td width="14%"><div align="center"><strong>Amount</strong></div></td></tr>';
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $description = $fetch['description'];
     $descriptionsplit = explode('*',$description);
@@ -2187,7 +2165,7 @@ function vieworgeneratepdfinvoice($slno,$type)
     $grid .='<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" >';
     $grid .='<tr><td ><table width="100%" border="0" cellspacing="0" cellpadding="2" bordercolor="#CCCCCC" style="border:1px solid "><tr bgcolor="#CCCCCC"><td width="10%"><div align="center"><strong>Sl No</strong></div></td><td width="76%"><div align="center"><strong>Description</strong></div></td><td width="14%"><div align="center"><strong>Amount</strong></div></td></tr>';
   }
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $description = $fetch['description'];
     $productbriefdescription = $fetch['productbriefdescription'];
@@ -2600,7 +2578,7 @@ function vieworgeneratepdfperforminvoice($slno,$type)
     $grid .='<tr><td ><table width="100%" border="0" cellspacing="0" cellpadding="2" bordercolor="#CCCCCC" style="border:1px solid "><tr bgcolor="#CCCCCC"><td width="10%"><div align="center"><strong>Sl No</strong></div></td><td width="76%"><div align="center"><strong>Description</strong></div></td><td width="14%"><div align="center"><strong>Amount</strong></div></td></tr>';
   }
         $countt=1;
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $description = $fetch['description'];
     $productbriefdescription = $fetch['productbriefdescription'];
@@ -3307,7 +3285,8 @@ function remove_duplicates($str)
   sort($results[0]);
   //remove duplicate results by comparing it to the previous value
   $prev="";
-  while(list($key,$val)=each($results[0])) 
+  $prev = "";
+  foreach ($results[0] as $key => $val)
   {
     if($val==$prev) unset($results[0][$key]);
     else $prev=$val;
@@ -3346,7 +3325,7 @@ function resendinvoice($invoiceno)
   // Fetch Contact Details
   $querycontactdetails = "select customerid,GROUP_CONCAT(emailid) as emailid from inv_contactdetails where customerid = '".$slno."'  group by customerid ";
   $resultcontact = runmysqlquery($querycontactdetails);
-  $resultcontactdetails = mysql_fetch_array($resultcontact);
+  $resultcontactdetails = mysqli_fetch_array($resultcontact);
   //$resultcontactdetails = runmysqlqueryfetch($querycontactdetails);
   
   $emailidres = removedoublecomma($resultcontactdetails['emailid']);
@@ -3971,10 +3950,10 @@ function sendimplementationmail($slno,$customerreference,$dealerid,$userid)
   $custgrid .= '<tr  align ="left"><td nowrap = "nowrap" width="20%">Sl No</td><td nowrap = "nowrap" width="80%">Remarks</td></tr>';
   $i_n = 0;
   $result1 = runmysqlquery($query);
-  $fetchcount = mysql_num_rows($result1);
+  $fetchcount = mysqli_num_rows($result1);
   if($fetchcount <> 0)
   {
-    while($fetch23 = mysql_fetch_array($result1))
+    while($fetch23 = mysqli_fetch_array($result1))
     {
       $i_n++;
       $slno++;
@@ -4003,7 +3982,7 @@ function sendimplementationmail($slno,$customerreference,$dealerid,$userid)
   $addongrid .= '<tr align ="left"><td nowrap = "nowrap"  ><strong>Sl No</strong></td><td nowrap = "nowrap" ><strong>Add-on</strong></td><td nowrap = "nowrap" ><strong>Remarks</strong></td></tr>';
   $result15 = runmysqlquery($query15);
   $slno3 =0;
-  while($fetch15 = mysql_fetch_array($result15))
+  while($fetch15 = mysqli_fetch_array($result15))
   {
     $slno3++;
     $addongrid .= '<tr align ="left">';
@@ -4012,7 +3991,7 @@ function sendimplementationmail($slno,$customerreference,$dealerid,$userid)
     $addongrid .= "<td >".$fetch15['remarks']."</td>";
     $addongrid .= "</tr>";
   }
-  $fetchcount2 = mysql_num_rows($result15);
+  $fetchcount2 = mysqli_num_rows($result15);
   if($fetchcount2 == '0')
     $addongrid .= "<tr><td colspan ='3' class='imp_td-border-grid'><div align='center'><font color='#FF0000'><strong>No Records to Display</strong></font></div></td></tr>";
     $addongrid .= "</table></td></tr></table>";
@@ -4022,7 +4001,7 @@ function sendimplementationmail($slno,$customerreference,$dealerid,$userid)
   $query1 ="SELECT slno,customerid,contactperson,selectiontype,phone,cell,emailid,slno from inv_contactdetails where customerid = '".$customerreference."'; ";
   $resultfetch = runmysqlquery($query1);
   $valuecount = 0;
-  while($fetchres = mysql_fetch_array($resultfetch))
+  while($fetchres = mysqli_fetch_array($resultfetch))
   {
     if(checkemailaddress($fetchres['emailid']))
     {
@@ -4229,7 +4208,7 @@ function sendshippmentmail($customerid,$type,$remarks)
     $query1 ="SELECT slno,customerid,contactperson,selectiontype,phone,cell,emailid,slno from inv_contactdetails where customerid = '".$customerid."'; ";
     $resultfetch = runmysqlquery($query1);
     $valuecount = 0;
-    while($fetchres = mysql_fetch_array($resultfetch))
+    while($fetchres = mysqli_fetch_array($resultfetch))
     {
       if(checkemailaddress($fetchres['emailid']))
       {
@@ -4332,7 +4311,7 @@ where imp_implementation.slno = '".$lastslno."';";
 left join  inv_mas_implementer on inv_mas_implementer.slno = imp_implementationdays.iccattachmentby
 where imp_implementationdays.impref = '".$lastslno."' and iccattachment = 'yes';";
   $result = runmysqlquery($query1);
-  $fetchcount = mysql_num_rows($result);
+  $fetchcount = mysqli_num_rows($result);
   if($fetchcount <> 0)
     $result1 = runmysqlqueryfetch($query1);
   if($fetch['branchapproval'] == 'no'  && $fetch['coordinatorreject'] == 'no' && $fetch['coordinatorapproval'] == 'no' && $fetch['implementationstatus'] == 'pending')  
@@ -4638,7 +4617,7 @@ function sendadvcollectmail($lastslno,$customerid,$type,$userid)
     $query1 ="SELECT slno,customerid,contactperson,selectiontype,phone,cell,emailid,slno from inv_contactdetails where customerid = '".$customerid."'; ";
     $resultfetch = runmysqlquery($query1);
     $valuecount = 0;
-    while($fetchres = mysql_fetch_array($resultfetch))
+    while($fetchres = mysqli_fetch_array($resultfetch))
     {
       if(checkemailaddress($fetchres['emailid']))
       {
@@ -4924,7 +4903,7 @@ function generatecustomerexcel($value,$type)
   
   $slno_count = 0;
   $databeginrow = $currentrow;
-  while($row_data = mysql_fetch_array($result))
+  while($row_data = mysqli_fetch_array($result))
   {
     $slno_count++;
     $mySheet->setCellValue('B'.$currentrow,$slno_count)
@@ -4998,7 +4977,7 @@ function forcesurrender($customerreference)
   
   $selectforce = ('<select name="forsurrender" class="swiftselect-mandatory" id="forsurrender" style="width:180px;" onchange="forcesurrenderdetails(\'countforcesurrender\');"><option value="">Make a selection</option>');
   
-  while($fetch = mysql_fetch_array($result))
+  while($fetch = mysqli_fetch_array($result))
   {
     $selectforce .= ('<option value="'.$fetch['slno'].'">'.$fetch['pinno']. ' | ' .$fetch['cardid'].'</option>');
   }
@@ -5258,7 +5237,7 @@ function mailtocustomers($customer_id)
         
   $result = runmysqlquery($query);
        
-        $fetch = mysql_fetch_array($result);
+        $fetch = mysqli_fetch_array($result);
    
            $cus_emailid = $fetch['emailid1'];
            $businessname = $fetch['businessname'];
@@ -5267,7 +5246,7 @@ function mailtocustomers($customer_id)
         $query1 = "SELECT  * from `inv_spp_amc_pinv` WHERE slno= '10'";
 
         $result1 = runmysqlquery($query1);
-        $fetch1 = mysql_fetch_array($result1);
+        $fetch1 = mysqli_fetch_array($result1);
         //$paycusid=fetch;
           $payslno="150";
           $payproductcode= $fetch1['products'];
@@ -5583,7 +5562,7 @@ function mailtopinvcustomers($p_slno)
         $query1 = "SELECT  * from `inv_spp_amc_pinv` WHERE slno= '$p_slno'";
         //echo $query1;
         $result1 = runmysqlquery($query1);
-        $fetch1 = mysql_fetch_array($result1);
+        $fetch1 = mysqli_fetch_array($result1);
           
           $cus_emailid=$fetch1['emailid'];
            //$cus_emailid='sanu.rakesh94@gmail.com';
