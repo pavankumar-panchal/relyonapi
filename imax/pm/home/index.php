@@ -1,4 +1,4 @@
-<? 
+<?php 
 	include('../functions/phpfunctions.php'); 
 	include('../inc/sessioncheck.php');
 	include('../inc/checkpermission.php');
@@ -9,14 +9,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-<? $pagetilte = getpagetitle($_GET['a_link']); echo($pagetilte); ?>
+<?php $pagetilte = getpagetitle($_GET['a_link']); echo($pagetilte); ?>
 </title>
-<link media="screen" rel="stylesheet" href="../functions/datepickercontrol.css?dummy=<? echo (rand());?>"  />
-<? include('../inc/scriptsandstyles.php'); ?>
+<link media="screen" rel="stylesheet" href="../functions/datepickercontrol.css?dummy=<?php echo (rand());?>"  />
+<?php include('../inc/scriptsandstyles.php'); ?>
 </head>
 <body>
 <div style="display:none; visibility:hidden;"><img src="../images/imax-loading-image.gif" border="0"/></div>
-	<?
+	<?php
 		$query = "Select fname,lname,name,email from saral_admins where adminid = '".$userid."'";
 		$fetch = runmysqlqueryfetch($query);
 		$fullname = $fetch['fname'].' '.$fetch['lname']; 
@@ -28,12 +28,12 @@
 	include("../inc/navigation.php");
 ?>
 <div id="pageheading">
-<? $pageheader = getpageheader($_GET['a_link']); echo($pageheader); ?>
+<?php $pageheader = getpageheader($_GET['a_link']); echo($pageheader); ?>
  </div>
-<div id="loggedas" style="text-align:right; border-bottom:1px #999999 dashed;">Logged in as: <? echo( $fullname); echo(' ['.$username.']')?> </div>
+<div id="loggedas" style="text-align:right; border-bottom:1px #999999 dashed;">Logged in as: <?php echo( $fullname); echo(' ['.$username.']')?> </div>
 <div id="clearlayer" />
 <div id="page_conents_filled">
-<? $pagelink = getpagelink($_GET['a_link']); include($pagelink); ?>
+<?php $pagelink = getpagelink($_GET['a_link']); include($pagelink); ?>
 </div>
 <!-- End page_conents_filled-->
 <div id="clearlayer"></div>

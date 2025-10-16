@@ -1,4 +1,4 @@
-<?
+<?php
 if($p_saralmail_search <> '1') 
 { 
 	$pagelink = getpagelink("unauthorised"); include($pagelink);
@@ -296,4 +296,4 @@ $(document).ready(function()
   </table>
   <!--End Main Table --> 
 
-<? }?>
+<?php } ?>

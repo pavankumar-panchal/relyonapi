@@ -1,4 +1,4 @@
-<?
+<?php
 $userid = imaxgetcookie('userid');
 ?>
 
@@ -6,7 +6,7 @@ $userid = imaxgetcookie('userid');
   <div>
     <ul class="menu">
       <li><a href="./index.php?a_link=home_dashboard"> Home </a></li>
-		<?  if($p_productmaster==1 || $p_main_product==1 || $p_grouphead==1){
+    <?php  if($p_productmaster==1 || $p_main_product==1 || $p_grouphead==1){
         ?>
             <li><a href="#"> Master </a>
         <? }?>
@@ -21,7 +21,7 @@ $userid = imaxgetcookie('userid');
      </li>
 
      
-		<?  if($p_versionupdate==1 ||$p_hotfixupdate==1 || $p_flashnewsupdate==1 || $p_career==1){
+    <?php  if($p_versionupdate==1 ||$p_hotfixupdate==1 || $p_flashnewsupdate==1 || $p_career==1){
         ?> <li><a href="#"> Manage Product </a> 
         <? }?>
           <!-- Sub Menu -->
@@ -33,7 +33,7 @@ $userid = imaxgetcookie('userid');
             </ul>
         </li>
         
-		<?  if($p_saralmail==1 || $p_saralmail_disable==1 || $p_saralmail_search==1){
+    <?php  if($p_saralmail==1 || $p_saralmail_disable==1 || $p_saralmail_search==1){
         ?><li><a href="#"> Manage Mail</a><? }?>
      
       <!-- Sub Menu -->

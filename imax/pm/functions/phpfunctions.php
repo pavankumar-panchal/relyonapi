@@ -1,4 +1,4 @@
-<?
+<?php
 //Include Database Configuration details
 if(file_exists("../inc/dbconfig.php"))
 	include('../inc/dbconfig.php');
@@ -6,6 +6,57 @@ elseif(file_exists("../../inc/dbconfig.php"))
 	include('../../inc/dbconfig.php');
 else
 	include('./inc/dbconfig.php');
+
+// PHP 8 compatibility shims for legacy mysql_* APIs (inline to avoid extra files)
+if (!function_exists('mysql_connect')) {
+	function mysql_connect($host = null, $user = null, $password = null)
+	{
+		$link = mysqli_connect($host, $user, $password);
+		if (!$link) {
+			die('Cannot connect to Mysql server host');
+		}
+		return $link;
+	}
+}
+if (!function_exists('mysql_select_db')) {
+	function mysql_select_db($dbname, $link_identifier = null)
+	{
+		return mysqli_select_db($link_identifier, $dbname);
+	}
+}
+if (!function_exists('mysql_query')) {
+	function mysql_query($query, $link_identifier = null)
+	{
+		return mysqli_query($link_identifier, $query);
+	}
+}
+if (!function_exists('mysql_fetch_array')) {
+	function mysql_fetch_array($result)
+	{
+		return mysqli_fetch_array($result, MYSQLI_BOTH);
+	}
+}
+if (!function_exists('mysql_num_rows')) {
+	function mysql_num_rows($result)
+	{
+		return mysqli_num_rows($result);
+	}
+}
+if (!function_exists('mysql_error')) {
+	function mysql_error($link_identifier = null)
+	{
+		return mysqli_error($link_identifier);
+	}
+}
+if (!function_exists('mysql_real_escape_string')) {
+	function mysql_real_escape_string($unescaped_string, $link_identifier = null)
+	{
+		if ($link_identifier) {
+			return mysqli_real_escape_string($link_identifier, $unescaped_string);
+		}
+		return addslashes($unescaped_string);
+	}
+}
 
 //Connect to host
 $newconnection = mysql_connect($dbhost, $dbuser, $dbpwd) or die("Cannot connect to Mysql server host");
@@ -77,10 +128,10 @@ function changedateformat($date)
 {
 	if($date <> "0000-00-00")
 	{
-		if(strpos($date, " "))
-		$result = split(" ",$date);
-		else
-		$result = split("[:./-]",$date);
+	if(strpos($date, " "))
+	$result = explode(" ",$date);
+	else
+	$result = preg_split("/[:.\/ -]/", $date);
 		$date = $result[2]."-".$result[1]."-".$result[0];
 	}
 	else
@@ -94,7 +145,7 @@ function changetimeformat($time)
 {
 	if($time <> "00:00:00")
 	{
-		$result = split(":",$time);
+		$result = explode(":", $time);
 		$time = $result[0].":".$result[1];
 	}
 	else
@@ -110,10 +161,10 @@ function changedateformatwithtime($date)
 	{
 		if(strpos($date, " "))
 		{
-			$result = split(" ",$date);
+			$result = explode(" ", $date);
 			if(strpos($result[0], "-"))
-				$dateonly = split("-",$result[0]);
-			$timeonly =split(":",$result[1]);
+				$dateonly = explode("-", $result[0]);
+			$timeonly = explode(":", $result[1]);
 			$timeonlyhm = $timeonly[0].':'.$timeonly[1];
 			$date = $dateonly[2]."-".$dateonly[1]."-".$dateonly[0]." ".'('.$timeonlyhm.')';
 		}
@@ -130,13 +181,14 @@ function generatepwd()
 {
 	$charecterset0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	$charecterset1 = "1234567890";
+	$usrpassword = '';
 	for ($i=0; $i<4; $i++)
 	{
-		$usrpassword .= $charecterset0[rand(0, strlen($charecterset0))];
+		$usrpassword .= $charecterset0[rand(0, strlen($charecterset0) - 1)];
 	}
 	for ($i=0; $i<4; $i++)
 	{
-		$usrpassword .= $charecterset1[rand(0, strlen($charecterset1))];
+		$usrpassword .= $charecterset1[rand(0, strlen($charecterset1) - 1)];
 	}
 	return $usrpassword;
 }
@@ -187,22 +239,22 @@ function getpagelink($linkvalue)
 {
 	switch($linkvalue)
 	{
-		case 'home_dashboard':return '../home/dashboard.php'; break;
-		case 'pm': return '../master/pm.php'; break;
-		case 'main_product': return '../master/product_update.php'; break;
-		case 'career': return '../manage/career.php'; break;
-		case 'version_product': return '../manage/verfrom.php'; break;
-		case 'hotfix_product': return '../manage/hot_fix.php'; break;
-		case 'flashnews': return '../manage/flash_news.php'; break;
-		case 'unauthorised': return '../usermanagement/unauthorised.php'; break;
-		case 'grouphead': return '../master/grouphead.php'; break;
-		case 'saralmail': return '../manage/saralmail.php'; break;
-		case 'saralmail_disable': return '../manage/saralmail_disable.php'; break;
-		case 'emailsearch': return '../manage/email_search.php'; break;
-		case 'registeruser': return '../master/register_user.php'; break;
-		case 'editprofile': return '../manage/edit_profile.php'; break;
-		
-		default: return '../home/dashboard.php'; break;
+		case 'home_dashboard':return '../home/dashboard.php';
+		case 'pm': return '../master/pm.php';
+		case 'main_product': return '../master/product_update.php';
+		case 'career': return '../manage/career.php';
+		case 'version_product': return '../manage/verfrom.php';
+		case 'hotfix_product': return '../manage/hot_fix.php';
+		case 'flashnews': return '../manage/flash_news.php';
+		case 'unauthorised': return '../usermanagement/unauthorised.php';
+		case 'grouphead': return '../master/grouphead.php';
+		case 'saralmail': return '../manage/saralmail.php';
+		case 'saralmail_disable': return '../manage/saralmail_disable.php';
+		case 'emailsearch': return '../manage/email_search.php';
+		case 'registeruser': return '../master/register_user.php';
+		case 'editprofile': return '../manage/edit_profile.php';
+        
+		default: return '../home/dashboard.php';
 	}
 }
 
@@ -210,21 +262,21 @@ function getpagetitle($linkvalue)
 {
 	switch($linkvalue)
 	{
-		case 'home_dashboard':return 'Product mAster : Dashboard'; break;
-		case 'pm': return 'Product mAster : Product Master'; break;
-		case 'main_product': return 'Product mAster : Main Product Update '; break;
-		case 'career': return 'Product mAster : Job Requirement'; break;
-		case 'version_product': return 'Product mAster : Product Version'; break;
-		case 'hotfix_product': return 'Product mAster : HotFix Version'; break;
-		case 'flashnews': return 'Product mAster : Flash News'; break;
-		case 'grouphead': return 'Product mAster : Grouphead Master'; break;
-		case 'saralmail': return 'Product mAster : Employee Official Email ID'; break;
-		case 'saralmail_disable': return 'Product mAster : Disabled Employee Details'; break;
-		case 'emailsearch': return 'Product mAster : Email ID Search'; break;
-		case 'registeruser': return 'Product mAster : Register User'; break;
-		case 'editprofile': return 'Product mAster : Edit Profile'; break;
+		case 'home_dashboard':return 'Product mAster : Dashboard';
+		case 'pm': return 'Product mAster : Product Master';
+		case 'main_product': return 'Product mAster : Main Product Update ';
+		case 'career': return 'Product mAster : Job Requirement';
+		case 'version_product': return 'Product mAster : Product Version';
+		case 'hotfix_product': return 'Product mAster : HotFix Version';
+		case 'flashnews': return 'Product mAster : Flash News';
+		case 'grouphead': return 'Product mAster : Grouphead Master';
+		case 'saralmail': return 'Product mAster : Employee Official Email ID';
+		case 'saralmail_disable': return 'Product mAster : Disabled Employee Details';
+		case 'emailsearch': return 'Product mAster : Email ID Search';
+		case 'registeruser': return 'Product mAster : Register User';
+		case 'editprofile': return 'Product mAster : Edit Profile';
 
-		default: return 'Product mAster : Dashboard'; break;
+		default: return 'Product mAster : Dashboard';
 	}
 }
 
@@ -232,21 +284,21 @@ function getpageheader($linkvalue)
 {
 	switch($linkvalue)
 	{
-		case 'home_dashboard':return 'Product mAster : Dashboard'; break;
-		case 'pm': return 'Product mAster : Product Master'; break;
-		case 'main_product': return 'Product mAster : Main Product Update '; break;
-		case 'career': return 'Product mAster : Job Requirement'; break;
-		case 'version_product': return 'Product mAster : Product Version'; break;
-		case 'hotfix_product': return 'Product mAster : HotFix Version'; break;
-		case 'flashnews': return 'Product mAster : Flash News'; break;
-		case 'grouphead': return 'Product mAster : Grouphead Master'; break;
-		case 'saralmail': return 'Product mAster : Employee Official Email ID'; break;
-		case 'saralmail_disable': return 'Product mAster : Disabled Employee Details'; break;
-		case 'emailsearch': return 'Product mAster : Email ID Search'; break;
-		case 'registeruser': return 'Product mAster : Register User'; break;
-		case 'editprofile': return 'Product mAster : Edit Profile'; break;
-		
-		default: return 'Product mAster : Dashboard'; break;
+		case 'home_dashboard':return 'Product mAster : Dashboard';
+		case 'pm': return 'Product mAster : Product Master';
+		case 'main_product': return 'Product mAster : Main Product Update ';
+		case 'career': return 'Product mAster : Job Requirement';
+		case 'version_product': return 'Product mAster : Product Version';
+		case 'hotfix_product': return 'Product mAster : HotFix Version';
+		case 'flashnews': return 'Product mAster : Flash News';
+		case 'grouphead': return 'Product mAster : Grouphead Master';
+		case 'saralmail': return 'Product mAster : Employee Official Email ID';
+		case 'saralmail_disable': return 'Product mAster : Disabled Employee Details';
+		case 'emailsearch': return 'Product mAster : Email ID Search';
+		case 'registeruser': return 'Product mAster : Register User';
+		case 'editprofile': return 'Product mAster : Edit Profile';
+        
+		default: return 'Product mAster : Dashboard';
 	}
 }
 
@@ -364,38 +416,21 @@ function downloadfile($filelink)
 	readfile($filelink);
 }
 
-function checkemailaddress($email) 
+function checkemailaddress($email)
 {
-	// First, we check that there's one @ symbol, and that the lengths are right
-	if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) 
-	{
-		// Email invalid because wrong number of characters in one section, or wrong number of @ symbols.
-		return false;
+	// Basic RFC-like validation using filter_var as ereg_* is removed
+	if (strlen($email) < 3 || strlen($email) > 320) return false;
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
+	// Domain should have at least one dot or be an IP in brackets
+	[$local, $domain] = explode('@', $email, 2);
+	if (preg_match('/^\[[0-9\.]+\]$/', $domain)) {
+		return true;
 	}
-	// Split it into sections to make life easier
-	$email_array = explode("@", $email);
-	$local_array = explode(".", $email_array[0]);
-	for ($i = 0; $i < sizeof($local_array); $i++) 
-	{
-		if (!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$", $local_array[$i])) 
-		{
+	if (substr_count($domain, '.') < 1) return false;
+	$labels = explode('.', $domain);
+	foreach ($labels as $label) {
+		if (!preg_match('/^(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)$/', $label)) {
 			return false;
-		}
-	}
-	if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) 
-	{ 
-		// Check if domain is IP. If not, it should be valid domain name
-		$domain_array = explode(".", $email_array[1]);
-		if (sizeof($domain_array) < 2) 
-		{
-			return false; // Not enough parts to domain
-		}
-		for ($i = 0; $i < sizeof($domain_array); $i++) 
-		{
-			if (!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$", $domain_array[$i])) 
-			{
-				return false;
-			}
 		}
 	}
 	return true;
@@ -533,7 +568,7 @@ function imaxuserlogoutredirect()
 function fullurl()
 {
 	
-	$s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+	$s = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 's' : '';
 	$protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
 	$port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
 	return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
@@ -569,7 +604,7 @@ function fileDelete($filepath,$filename)
 function finalsplit($name)
 {
 	
-	$array[]= split(',',$name);
+	$array[]= explode(',', $name);
 	for($j=0;$j<count($array);$j++)
 	{
 		$splitarray = $array[$j][0];
@@ -581,7 +616,7 @@ function firstletterupper($result_contact)
 {
 	
 	$count = 0;
-	$contact = split(',',$result_contact);
+	$contact = explode(',', $result_contact);
 	$array = array_map('trim', $contact);
 	for($j=0;$j<count($array);$j++)
 	{
@@ -591,6 +626,7 @@ function firstletterupper($result_contact)
 		$var1 = strtoupper(substr($array[$j],0,1));
 		$char1[] = $var1.$res;
 	}
+	$result1 = '';
 	for($i=0;$i<count($char1);$i++)
 	{
 		if($count > 0)
@@ -649,6 +685,8 @@ function encodevalue($input)
 function generateemployeeid($employeeid)
 {
 	
+	// Use the provided argument as region/category to avoid undefined variable notice
+	$dealerregion = $employeeid;
 	$query4 = "select ifnull(max(onlineinvoiceno),0)+ 1 as invoicenotobeinserted from inv_invoicenumbers where category = '".$dealerregion."'";
 	$resultfetch4 = runmysqlqueryfetch($query4);
 	$onlineinvoiceno = $resultfetch4['invoicenotobeinserted'];
@@ -757,16 +795,11 @@ function remove_duplicates($str)
   preg_match_all("([\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7})",$str,$results);
 	//sort the results alphabetically
   sort($results[0]);
-	//remove duplicate results by comparing it to the previous value
-  $prev="";
-  while(list($key,$val)=each($results[0])) 
-  {
-    if($val==$prev) unset($results[0][$key]);
-    else $prev=$val;
-  }
+	// remove duplicate results
+	$unique = array_values(array_unique($results[0]));
 	//process the array and return the remaining email addresses
-  $str = "";
-  foreach ($results[0] as $value)
+	$str = "";
+	foreach ($unique as $value)
   {
      $str .= $value.",";
   }

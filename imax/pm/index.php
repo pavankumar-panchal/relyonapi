@@ -1,4 +1,4 @@
-<?
+<?php
 	include('./functions/phpfunctions.php');
 
 	session_start();
@@ -92,7 +92,7 @@
 					$eventquery = "Insert into saral_audit(userid,ipaddr,datetime,activity_type,eventtype) values('".$userid."','".$_SERVER['REMOTE_ADDR']."','".date('Y-m-d').' '.date('H:i:s')."','Logged in','1')";
 					$eventresult = runmysqlquery($eventquery);
 					
-					if(isset($_GET['link']) && isurl($_GET['link']) && isvalidhostname($_GET['link']))
+					if(isset($_GET['link']) && isurl($_GET['link']) && isvalidhostname())
 					{
 								header('Location:'.$_GET['link']);
 					}
@@ -120,7 +120,7 @@
 <title>Product Master Login</title>
 <link type="text/css" href="./css/login.css" rel="stylesheet" media="all" />
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
-<script language="javascript" src="./functions/cookies.js?dummy=<? echo (rand());?>"></script>
+<script language="javascript" src="./functions/cookies.js?dummy=<?php echo (rand());?>"></script>
 <script language="javascript">
 function checknavigatorproperties()
 {
@@ -133,8 +133,8 @@ function checknavigatorproperties()
 }
 
 </script>
-<? include('./inc/scriptsandstyles.php'); ?>
-<script language="javascript" src="./functions/main-enter-shortcut.js?dummy=<? echo (rand());?>"></script>
+<?php include('./inc/scriptsandstyles.php'); ?>
+<script language="javascript" src="./functions/main-enter-shortcut.js?dummy=<?php echo (rand());?>"></script>
 <style type="text/css">
 #apDiv1 
 {
@@ -164,7 +164,7 @@ function checknavigatorproperties()
     <form id="submitform" name="submitform" method="post" action="">
       <div class="email-div">
         <label for="Email"><strong class="email-label">Username</strong></label>
-        <input name="username" type="text" class="swifttext type_enter" id="username" size="30" maxlength="40" value="<? echo($defaultusername);?>" />
+	<input name="username" type="text" class="swifttext type_enter" id="username" size="30" maxlength="40" value="<?php echo($defaultusername);?>" />
       </div>
       <!--email-div-->
       
@@ -185,7 +185,7 @@ function checknavigatorproperties()
       <noscript>
       <div class="error-message"> Enable cookies/javscript/both in your browser,  then </div>
       </noscript>
-      <? if($message <> '') echo($message); ?>
+	<?php if($message <> '') echo($message); ?>
     </div>
   </div>
   <!--signin-box --> 
