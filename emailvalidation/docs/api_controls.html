@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>API Controls — Upload / Verify Domain / Verify SMTP</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:24px auto;padding:0 16px;color:#111}
+    h1{color:#1f2937}
+    form{background:#f8fafc;border:1px solid #e2e8f0;padding:16px;margin-bottom:18px;border-radius:8px}
+    label{display:block;margin:6px 0 2px;font-weight:600}
+    input[type=text], input[type=number], select{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:6px}
+    input[type=file]{padding:6px}
+    button{margin-top:10px;padding:10px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer}
+    .note{font-size:13px;color:#475569;margin-top:6px}
+    .row{display:flex;gap:12px}
+    .col{flex:1}
+    pre{background:#111827;color:#fff;padding:12px;border-radius:6px;overflow:auto}
+  </style>
+</head>
+<body>
+  <h1>API Controls</h1>
+  <p>Use this page to upload CSVs and trigger domain or SMTP verification. Server base: <code>/Single_email/backend/routes/api.php</code></p>
+
+  <form id="uploadForm" action="/Single_email/backend/routes/api.php/api/upload" method="post" enctype="multipart/form-data" target="_blank">
+    <h2>Upload CSV (multipart/form-data)</h2>
+    <label for="csv_file">CSV file (first column: email)</label>
+    <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+
+    <div class="row">
+      <div class="col">
+        <label for="user_id">user_id (required)</label>
+        <input type="number" id="user_id" name="user_id" value="1" required>
+      </div>
+      <div class="col">
+        <label for="list_name">list_name (required)</label>
+        <input type="text" id="list_name" name="list_name" value="My Campaign" required>
+      </div>
+    </div>
+
+    <label for="file_name">file_name (required)</label>
+    <input type="text" id="file_name" name="file_name" value="upload.csv" required>
+
+    <div class="note">Note: File size limit enforced by the app is 5 MB. The response will open in a new tab.</div>
+    <button type="submit">Upload and Process</button>
+  </form>
+
+  <form id="verifyDomainForm" action="/Single_email/backend/routes/api.php/api/verify-domain" method="post" target="_blank">
+    <h2>Run Domain Verification</h2>
+    <label for="vd_user_id">user_id</label>
+    <input type="number" id="vd_user_id" name="user_id" value="1" required>
+    <label for="vd_csv_list_id">csv_list_id (optional)</label>
+    <input type="number" id="vd_csv_list_id" name="csv_list_id" placeholder="leave empty to run for all pending">
+    <div class="note">Runs domain checks for pending emails and returns JSON results in a new tab.</div>
+    <button type="submit">Start Domain Verification</button>
+  </form>
+
+  <form id="verifySmtpForm" action="/Single_email/backend/routes/api.php/api/verify-smtp" method="post" target="_blank">
+    <h2>Run SMTP Verification</h2>
+    <label for="vs_user_id">user_id</label>
+    <input type="number" id="vs_user_id" name="user_id" value="1" required>
+    <label for="vs_csv_list_id">csv_list_id (optional)</label>
+    <input type="number" id="vs_csv_list_id" name="csv_list_id" placeholder="optional">
+    <div class="note">Runs SMTP checks for emails with verified domains. This endpoint may run longer and spawn workers.</div>
+    <button type="submit">Start SMTP Verification</button>
+  </form>
+
+  <section>
+    <h2>Quick Export Links</h2>
+    <p>Change <code>user_id</code> in the link if needed.</p>
+    <ul>
+      <li><a id="jsonLink" href="/Single_email/backend/routes/api.php/api/get-results?user_id=1&page=1&limit=100" target="_blank">View JSON results (user_id=1)</a></li>
+      <li><a id="validCsvLink" href="/Single_email/backend/routes/api.php/api/get-results?user_id=1&export=valid" target="_blank">Download VALID emails CSV</a></li>
+      <li><a id="invalidCsvLink" href="/Single_email/backend/routes/api.php/api/get-results?user_id=1&export=invalid" target="_blank">Download INVALID emails CSV</a></li>
+      <li><a id="timeoutCsvLink" href="/Single_email/backend/routes/api.php/api/get-results?user_id=1&export=connection_timeout" target="_blank">Download CONNECTION/TIMEOUT CSV</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Combined: Upload and Run</h2>
+    <p>Single API call to upload and immediately run domain + SMTP verification (response contains all results)</p>
+    <form id="uploadRunForm" action="/Single_email/backend/routes/api.php/api/upload-and-run" method="post" enctype="multipart/form-data" target="_blank">
+      <label for="ur_csv_file">CSV file</label>
+      <input type="file" id="ur_csv_file" name="csv_file" accept=".csv" required>
+      <label for="ur_user_id">user_id</label>
+      <input type="number" id="ur_user_id" name="user_id" value="1" required>
+      <label for="ur_list_name">list_name</label>
+      <input type="text" id="ur_list_name" name="list_name" value="My Campaign" required>
+      <label for="ur_file_name">file_name</label>
+      <input type="text" id="ur_file_name" name="file_name" value="upload.csv" required>
+      <button type="submit">Upload and Run All</button>
+    </form>
+  </section>
+
+  <script>
+    // Keep quick links in sync with the user_id fields
+    function updateLinks() {
+      var uid = document.getElementById('vd_user_id').value || document.getElementById('vs_user_id').value || document.getElementById('user_id').value || '1';
+      document.getElementById('jsonLink').href = '/Single_email/backend/routes/api.php/api/get-results?user_id=' + uid + '&page=1&limit=100';
+      document.getElementById('validCsvLink').href = '/Single_email/backend/routes/api.php/api/get-results?user_id=' + uid + '&export=valid';
+      document.getElementById('invalidCsvLink').href = '/Single_email/backend/routes/api.php/api/get-results?user_id=' + uid + '&export=invalid';
+      document.getElementById('timeoutCsvLink').href = '/Single_email/backend/routes/api.php/api/get-results?user_id=' + uid + '&export=connection_timeout';
+    }
+    document.getElementById('vd_user_id').addEventListener('input', updateLinks);
+    document.getElementById('vs_user_id').addEventListener('input', updateLinks);
+    document.getElementById('user_id').addEventListener('input', updateLinks);
+    updateLinks();
+  </script>
+</body>
+</html>

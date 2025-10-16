@@ -1,0 +1,8 @@
+file name : registration.php
+Post Data:
+1. HDDID
+2. ETHID
+3. CUSTID
+4. PIN
+5. PID
+6. REGTYPE

@@ -1,0 +1,25 @@
+
+==============================================================
+
+Dear sir/madam,
+
+	Official Email ID has been enabled.
+--------------------------------------------------------------
+ 
+		EMPLOYEE DETAILS :
+--------------------------------------------------------------
+
+		EMPLOYEE NAME : ##NAME##
+		ENABLED ON : ##DISABLEDATE##
+		EMPLOYEE ID : ##EMPID##
+		E-MAIL : ##EMAIL##@##DOMAIN##
+		PASSWORD : ##DISABLEPASS##
+		REASON : ##REASON##
+		REMARKS : ##REMARKS##
+ 
+==============================================================
+
+Thank you,
+Warm Regards,
+Webmaster,
+Relyon Softech Limited

@@ -1,0 +1,4 @@
+
+[27-Jun-2017 14:57:43 Asia/Kolkata] PHP Warning:  mysql_connect(): Host 'server.relyonsoft.com' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /home/relyonsoft/public_html/imax/api/productupdatepurchase/functions/phpfunctions.php on line 23
+[27-Jun-2017 15:02:33 Asia/Kolkata] PHP Warning:  mysql_connect(): Host 'server.relyonsoft.com' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /home/relyonsoft/public_html/imax/api/productupdatepurchase/functions/phpfunctions.php on line 23
+[27-Jun-2017 15:37:05 Asia/Kolkata] PHP Warning:  mysql_connect(): Host 'server.relyonsoft.com' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /home/relyonsoft/public_html/imax/api/productupdatepurchase/functions/phpfunctions.php on line 23

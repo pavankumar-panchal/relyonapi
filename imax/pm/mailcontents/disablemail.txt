@@ -1,0 +1,28 @@
+
+=============================================================================================
+
+Dear sir/madam,
+
+	Official Email ID has been disable.
+----------------------------------------------------------------------------------------------
+ 
+		EMPLOYEE DETAILS :
+----------------------------------------------------------------------------------------------
+
+		EMPLOYEE NAME : ##NAME##
+		DISABLED ON : ##DISABLEDATE##
+		EMPLOYEE ID : ##EMPID##
+		EMPLOYEE DEPT : ##DEPART##
+		EMPLOYEE HEAD : ##GROUPHEADMAIL##
+		E-MAIL : ##EMAIL##@##DOMAIN##
+		REASON : ##REASON##
+		REMARKS : ##REMARKS##
+ 
+ 
+Sysadmin Note: Get password from webmaster and take mails backup from above Mail ID. 
+==============================================================================================
+
+Thank you,
+Warm Regards,
+Webmaster,
+Relyon Softech Limited

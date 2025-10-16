@@ -1,0 +1,31 @@
+
+===============================
+
+Dear sir/madam,
+
+	Here is the new Official email ID.
+		
+--------------------------------------------------------------
+		 
+		EMPLOYEE DETAILS :
+--------------------------------------------------------------		
+		
+NAME : ##NAME##
+EMPLOYEE ID : ##EMPID##
+E-MAIL : ##EMAIL##@##DOMAIN##
+PASSWORD : ##PASS##
+CREATED ON : ##DATE##
+DEPARTMENT : ##DEPART##
+FORWARDED TO : ##FORWARD## 
+GROUP HEAD : ##HEAD##
+REQUESTED BY : ##REQUEST##
+REASON : ##REASON##
+REMARKS : ##REMARKS##
+		 
+==============================================================
+
+Thank you,
+Warm Regards,
+Webmaster,
+Relyon Softech Limited
+

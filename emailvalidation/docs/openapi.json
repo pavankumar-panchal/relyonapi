@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "CRM_API - Single Email Processor", "version": "1.0.0" },
+  "servers": [ { "url": "http://localhost/Single_email/backend/routes/api.php" } ],
+  "paths": {
+    "/api/single-email": {
+      "post": {
+        "summary": "Process a single email (validate, domain & SMTP checks)",
+        "description": "Accepts a single email and user_id, runs account validation, domain resolution and SMTP RCPT check, updates the emails table and returns a detailed JSON verdict.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleEmailRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Detailed validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "description": "API call status, e.g. success or error" },
+                    "email_id": { "type": "integer", "description": "DB id of the created email row (if any)" },
+                    "email": { "type": "string", "description": "Normalized email used for processing" },
+                    "account": { "type": "string" },
+                    "domain": { "type": "string" },
+                    "excluded": { "type": "boolean", "description": "True if the email was excluded from verification by rules" },
+                    "validation": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "object",
+                          "properties": {
+                            "domain_verified": { "type": "integer", "description": "DB domain_verified flag" },
+                            "domain_status": { "type": "integer", "description": "DB domain_status (0/1)" },
+                            "resolved": { "type": "boolean" },
+                            "ips": { "type": "array", "items": { "type": "string" } },
+                            "message": { "type": "string" }
+                          }
+                        },
+                        "smtp": {
+                          "type": "object",
+                          "properties": {
+                            "attempted": { "type": "boolean" },
+                            "ip": { "type": "string" },
+                            "steps": { "type": "object", "description": "Per-step booleans (smtp_connection, ehlo, mail_from, rcpt_to)" },
+                            "validation_status": { "type": "string" },
+                            "validation_response": { "type": "string" },
+                            "domain_status": { "type": "integer" }
+                          }
+                        },
+                        "overall": { "type": "string" }
+                      }
+                    },
+                    "result": { "type": "string", "description": "Overall machine-friendly result (valid/invalid/retryable/unknown/excluded)" },
+                    "quick_status": {
+                      "type": "object",
+                      "properties": {
+                        "label": { "type": "string", "description": "Quick label" },
+                        "is_valid": { "type": "boolean", "description": "True when label === 'valid'" },
+                        "reason": { "type": "string", "description": "Short reason or server reply suitable for logs/UI" }
+                      }
+                    },
+                    "valid": { "type": "boolean", "description": "True when email is verified as valid" },
+                    "short_status": { "type": "string", "description": "Short label: valid/invalid/retryable/excluded/unknown" },
+                    "reason": { "type": "string", "description": "One-line short reason suitable for UI" },
+                    "db_row": { "type": "object", "description": "Optional DB row snapshot or details" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Validation error" },
+          "500": { "description": "Server error" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SingleEmailRequest": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "format": "email" },
+          "user_name": { "type": "string" }
+        },
+        "required": ["email"]
+      }
+    }
+  }
+}
+

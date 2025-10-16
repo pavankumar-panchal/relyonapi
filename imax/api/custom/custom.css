@@ -1,0 +1,23 @@
+/* nt-example1 */
+#nt-example1 {
+	max-width: 620px;
+	margin: auto;
+    padding: 6px;
+}
+
+#nt-example1-container {
+	text-align: center;
+}
+#nt-example1 li {
+    color: #4e4e4e;
+        font-family:calibri !important;
+        font-size: 16px !important;
+	background: #F2F2F2;
+	overflow: hidden;
+	text-align: justify;
+        height: 160px;
+	border-bottom: 1px dotted #2c8162;
+}
+#nt-example1 li:hover {
+	background: #FFF;
+}

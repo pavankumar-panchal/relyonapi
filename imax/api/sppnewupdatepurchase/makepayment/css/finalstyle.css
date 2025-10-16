@@ -1,0 +1,203 @@
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+    background:#ffffff;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+      background:#ffffff;
+}
+
+.main {
+  background:#f1f1f1;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 20px 0 0 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+
+.panel {
+    border: 0px solid transparent;
+    background: #f1f1f1;
+}
+
+.panel-default>.panel-heading .badge {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.container {
+    background: #ffffff;
+    border-radius:10px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.panel-heading {
+    border-bottom: 0px solid #555555 !important;
+}
+
+.panel-default>.panel-heading {
+    color: #ffffff;
+    background-color: #428bca;
+    padding-bottom: 1px !important;
+}
+canvas{
+    height: 150px;
+   margin-left: -20px;
+}
+#scircle {
+width: 100px;
+height: 100px;
+background: #fff;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 60px;
+padding-top: 10px;
+border: 6px solid #05a505;
+margin-left: 42%;
+}
+
+.mainbox{    
+    border: 1px solid #909296;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+.btn{float:right;
+        margin-right: 25px;
+}
+         #fcircle {
+              margin-left: 42%;
+              display: inline-block;
+              -webkit-box-sizing: content-box;
+              -moz-box-sizing: content-box;
+              box-sizing: content-box;
+              width: 0.75em;
+              height: 0.75em;
+              position: relative;
+              padding: auto;
+              border: 6px solid red;
+              -webkit-border-radius: 1em;
+              border-radius: 1em;
+              font: normal 8em/normal Arial, Helvetica, sans-serif;
+              color: rgba(219,50,50,1);
+              -o-text-overflow: clip;
+              text-overflow: clip;
+              background: #fff;
+            }
+            
+             #fcircle::before {
+              display: inline-block;
+              -webkit-box-sizing: content-box;
+              -moz-box-sizing: content-box;
+              box-sizing: content-box;
+              width: 0.45em;
+              height: 0.1em;
+              position: absolute;
+              content: "";
+              top: 0.33em;
+              left: 0.155em;
+              border: none;
+              font: normal 100%/normal Arial, Helvetica, sans-serif;
+              color: rgba(0,0,0,1);
+              -o-text-overflow: clip;
+              text-overflow: clip;
+              background: red;
+              text-shadow: none;
+              -webkit-transform: rotateZ(45deg)   ;
+              transform: rotateZ(45deg)   ;
+            }
+            
+             #fcircle::after {
+              display: inline-block;
+              -webkit-box-sizing: content-box;
+              -moz-box-sizing: content-box;
+              box-sizing: content-box;
+              width: 0.45em;
+              height: 0.1em;
+              position: absolute;
+              content: "";
+              top: 0.33em;
+              left: 0.155em;
+              border: none;
+              font: normal 100%/normal Arial, Helvetica, sans-serif;
+              color: rgba(0,0,0,1);
+              -o-text-overflow: clip;
+              text-overflow: clip;
+              background: red;
+              text-shadow: none;
+              -webkit-transform: rotateZ(-45deg)   ;
+              transform: rotateZ(-45deg)   ;
+            }
+            .inf{    margin-top: 16px;
+    border-radius: 30px !important;}
+    

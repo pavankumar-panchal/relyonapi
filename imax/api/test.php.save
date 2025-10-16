@@ -1,0 +1,15 @@
+<?php
+$data="hello world";
+if (file_exists()) {
+    chmod($filename, 0777);
+    echo "The file $filename exists";
+} else {
+    echo "The file $filename does not exist";
+}
+$myfile = fopen("aa.txt", "w") or die("Unable to open file!");
+$txt = $data;
+fwrite($myfile, $txt);
+$txt = "Jane Doe\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+?>

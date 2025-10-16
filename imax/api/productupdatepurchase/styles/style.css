@@ -1,0 +1,585 @@
+
+
+
+
+a {
+	color:#069;
+	text-decoration:none;
+}
+
+#pageholder {
+	margin:0 auto;
+	width:100%;
+	
+}
+#pagebacktop {
+	
+	height:150px;
+	margin-bottom:-150px;
+}
+#pagebackbtm {
+	background:url(../images/background-top-btm.png) no-repeat 0 -400px;
+	height:150px;
+	clear:both;
+}
+
+
+.btmlinks {
+	list-style:none;
+	margin:0 0 10px 0;
+	float:left;
+	padding:0 0px 0 0;
+}
+.btmlinks li {
+	border-right:1px solid #069;
+	padding:0 10px 0 0;
+	margin-right:10px;
+	float:left;
+}
+.btmlinks li.last {
+	margin-right:0;
+	padding:0;
+	border-right:none;
+}
+
+
+
+
+
+.rightlink-header
+{
+font-size:12px;
+color:#ffffff;
+font-weight:bold;
+background:url(../images/background.gif) repeat-x;
+padding-bottom:5px;
+padding-top:3px;
+
+}
+
+
+
+
+.product1tabhead
+{
+	border-left:0px solid #cccccc;
+	border-top:0px solid #cccccc;
+	border-right:0px solid #cccccc;
+	border-bottom:2px solid #cccccc;
+	cursor:pointer;
+ }
+.product1tabheadactive
+{
+	border-left:2px solid #cccccc;
+	border-top:2px solid #cccccc; 
+	border-right:2px solid #cccccc;
+}
+.product1tabheadnone
+{
+	border-bottom:2px solid #cccccc;
+}
+
+.product1content
+{
+	border-bottom:2px solid #cccccc; 
+	border-left:2px solid #cccccc;
+	border-right:2px solid #cccccc;
+	
+}
+
+.product1tabcontentheading
+{
+ font-size:14px;
+ font-weight:bold;
+}
+
+.buyproduct1tab
+{
+	border-left:2px solid #cccccc;
+	border-top:2px solid #cccccc; 
+	border-right:2px solid #cccccc;
+	border-bottom:2px solid #cccccc;
+	cursor:pointer;
+	background-color:#F5F9FE;
+}
+.loginboxheader
+{
+	background:url(../images/relyonweb-loginheader-back.gif) no-repeat;
+	height:28px;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:left;
+	padding-left:15px;
+	font-weight:bold;
+	cursor:pointer;
+	
+}
+.requestboxheader
+{
+	background:url(../images/relyonweb-smallheader-back-grey.gif) no-repeat;
+	height:28px;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:left;
+	padding-left:15px;
+	font-weight:bold;
+	cursor:pointer;
+	
+}
+.contentheading
+{
+ font-size:18px;
+ font-weight:bold;
+ color:#5891c1;
+ padding-left:10px;
+}
+
+#contentbox
+{
+ font-size:12.5px;
+ line-height:18px;
+ padding-left:10px;
+}
+
+.homecontentbox
+{
+color:#000000;
+font-size:16px;
+font-weight:bold;
+
+}
+
+.homecontentbox1
+{
+color: #3366CC;
+font-size:16px;
+font-weight:bold;
+padding-left:15px;
+}
+
+.writecontentbox
+{
+border:#999999 1px solid;
+background: #F7F7F7
+}
+
+
+.tabheadactive{border-left:1px solid #EEEEEE; border-top:1px solid #B5D3F4; border-bottom:1px solid #B5D3F4; background-color:#FFFFFF; padding-left:12px}
+
+.tabhead{border-left:1px solid #EEEEEE; border-right:1px solid #B5D3F4; background-color:#EDF5FE; cursor:pointer; padding-left:12px}
+.cellbackground{background-image:url(../images/sto-cellbackground.jpg);background-repeat:repeat-x; background-position:bottom;}
+
+.swiftchoicebutton
+{
+	 BORDER: solid 0 #FFFFFF;
+	 BACKGROUND:URL(../images/button.gif) left no-repeat; 
+	 WIDTH: 107px; 
+	 HEIGHT: 23px; 
+	 COLOR: #000000; 
+	 padding-top: 3px; 
+	 padding-bottom: 15px; 
+	 padding-left:20px;
+	 vertical-align:middle;
+	 cursor:pointer;
+	 border:0;
+	 font-family:calibri;
+}
+.swiftchoicebuttondisabled
+{
+	BORDER: solid 0 #FFFFFF; BACKGROUND: URL(../images/greybuttonbg.gif) no-repeat; HEIGHT: 21px; WIDTH: 85px; COLOR: #cccccc; FONT-FAMILY: Verdana, Tahoma; FONT-SIZE: 11px; MARGIN: 0px; padding-top: 3px; padding-bottom: 15px; vertical-align:middle;
+}
+.swiftchoicebuttongeneral
+{
+	BORDER: solid 0 #FFFFFF;
+	BACKGROUND: URL(../images/bluebuttonbg.gif) no-repeat; 
+	HEIGHT: 21px; WIDTH: 85px; COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma; 
+	FONT-SIZE: 11px; 
+	MARGIN: 0px; 
+	padding-top: 3px; 
+	padding-bottom: 15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.swiftchoiceproceedbutton
+{
+	 BORDER: solid 0 #FFFFFF;
+	 BACKGROUND:URL(../images/proceed-button-image.gif) left no-repeat; 
+	 WIDTH: 177px; 
+	 HEIGHT: 26px; 
+	 COLOR: #000000; 
+	 padding-top: 3px; 
+	 padding-bottom: 15px; 
+	 padding-left:5px;padding-right:5px;
+	 vertical-align:middle;
+	 cursor:pointer;
+	 border:0;
+	 font-family:calibri;
+}
+
+.swiftchoicepaymentbutton
+{
+	 BORDER: solid 0 #FFFFFF;
+	 BACKGROUND:URL(../images/payment-button.gif) left no-repeat; 
+	 WIDTH: 164px; 
+	 HEIGHT: 25px; 
+	 COLOR: #000000; 
+	 padding-top: 1px; 
+	 padding-bottom: 3px; 
+	 padding-left:5px;padding-right:5px;
+	 vertical-align:middle;
+	 cursor:pointer;
+	 border:0;
+	 font-family:calibri;
+	 font-size:16px;
+}
+
+.errorbox
+{
+	padding-left:30px; 
+	padding-top:4px;
+	padding-bottom:6px;
+	padding-right:4px;
+	color:#333333;
+    font-size:11px;
+	border:1px solid #e82a2a;
+	font-weight:bold;
+	background:url(../images/icon_error.gif) left no-repeat #ffeaea;
+}
+
+.tr-border-grid
+{
+	border-bottom:#d1dceb 1px solid;
+}
+
+.td-border-grid
+{
+	border-bottom:#d1dceb 1px solid;
+	border-top:#d1dceb 1px solid;
+	border-left:#d1dceb 1px solid;
+}
+
+.tr-grid-header
+{
+	background-color:#FFC082;
+	color:#333333;
+	font-weight:bold;
+	font-size:14px;
+}
+.sub-heading-font
+{
+	color:#207915;
+	font-weight:bold;
+	font-size:14px;
+	
+}
+.paymenttotfont
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#666666;
+}
+
+.product1links
+{
+	font-size:12px;
+	COLOR: #FF0000 ;
+	TEXT-DECORATION: none;
+	padding:0px;
+}
+.product1links:hover
+{
+	font-size:12px;
+	COLOR:#6590d8;
+	TEXT-DECORATION: none;
+	padding:0px;
+}
+
+.clientlinks
+{
+	font-size:12px;
+	COLOR: #6590d8 ;
+	TEXT-DECORATION: none;
+	padding:0px;
+}
+.clientlinks:hover
+{
+	font-size:12px;
+	COLOR:#008000;
+	TEXT-DECORATION: none;
+	padding:0px;
+}
+
+.noproductllink
+{
+	font-size:12px;
+	font-weight:bold;
+	color:#000000;
+	text-align:left;
+}
+
+.headingfonts
+{
+	font-size:16px;
+	font-weight:bold;
+	color:#000000;
+	cursor:pointer;
+	text-align:left;
+	
+}
+.subfonts
+{
+	font-family:"Segoe UI", Tahoma, Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	color:#1f578e;
+	cursor:pointer;
+}
+.swifttext-mandatory
+{
+	BACKGROUND-COLOR:#F0F0F0;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	PADDING: 2px 2px 2px 2px;
+	MARGIN: 0px;
+	
+}
+.swifttext
+{
+	BACKGROUND-COLOR: #FFFFFF;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	PADDING: 2px 2px 2px 2px;
+	MARGIN: 0px;
+	
+
+}
+#paymentbg {
+	background: url(../images/payment-bg.gif) #f8fafc repeat-x
+}
+.buyonlinebox{border:#333333 1px solid; padding:4px; background-color:#FBF9D9}
+.subheading-font
+{
+	font-size: 22px;
+	font-weight:bold;
+	font-family: calibri;
+	color: #000000;
+	padding-left:5px;
+}
+.swiftselect-mandatory
+{
+	BORDER: 1px SOLID #4C77B6;
+	BACKGROUND-COLOR: #F0F0F0;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	margin: 0px;
+	padding: 1px;
+	vertical-align: middle;
+	Z-INDEX: 11;
+	/*position:relative;*/
+}
+.swiftselect
+{
+	BORDER: 1px SOLID #4C77B6;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	margin: 0px;
+	padding: 1px;
+	vertical-align: middle;
+	Z-INDEX: 11;
+	/*position:relative;*/
+}
+.sideheading
+{
+ font-size:13px;
+ font-weight:bold;
+ color:#000000;
+ font-style:italic;
+}
+.displayfont
+{
+ font-family:"Segoe UI", Tahoma, Arial, Helvetica, sans-serif;
+ font-size:13px;
+ color:#212121;
+}
+.fontstyle
+{
+ font-size:13px;
+ color:#666666;
+ font-family:calibri;
+}
+.headerlink
+{
+ font-size:12px;
+ color:#0055cc;
+}
+
+.headerlink:hover
+{
+ font-size:12px;
+ color:#FF0000;
+}
+.blueline
+{
+	background: url(../images/blueline.gif) repeat-x top;
+}
+.swiftselect
+{
+	BORDER: 1px SOLID #4C77B6;
+	BACKGROUND-COLOR: #FFFFFF;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	margin: 0px;
+	padding: 1px;
+	vertical-align: middle;
+	Z-INDEX: 11;
+	/*position:relative;*/
+}
+
+.swifttextarea
+{
+	BACKGROUND-COLOR: #FFFFFF;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER: 1px SOLID #666666;
+	padding: 2px 2px 2px 2px;
+	vertical-align: middle;
+}
+
+.errorbox
+{
+	padding-left:25px; 
+	padding-top:4px;
+	padding-bottom:4px;
+	/*padding-right:4px;*/
+	color:#333333;
+    font-size:11px;
+	border:1px solid #e82a2a;
+	font-weight:bold;
+	background:url(../images/icon_error.gif) left no-repeat #ffeaea;
+	
+}
+
+.successbox
+{
+	padding-left:25px; 
+	padding-top:4px;
+	padding-bottom:4px;
+	color:#333333;
+    font-size:11px;
+	border:1px solid #adc7a1;
+	font-weight:bold;
+	background:#edf3eb;
+	background:url(../images/green-status.gif) left no-repeat #edf3eb;
+}
+
+.contactcontentdisplay
+{
+	font-size: 11px;
+	background:  #F2F9FF;
+}
+
+.rupee
+{
+	padding-left:16px;
+
+	background: url(../images/relyon-rupee-symbol.jpg) left no-repeat;
+
+	background-position: left;
+}
+.rupee1
+{
+	padding-left:16px;
+	background: url(../images/relyon-rupee-small.jpg) left no-repeat;
+	background-position: left;
+}
+
+.table-border-grid
+{
+	border-bottom:#d1dceb 1px solid;
+	border-right:#d1dceb 1px solid; 
+}
+
+.td-border-grid1
+{
+	border-top:#d1dceb 1px solid;
+	border-left:#d1dceb 1px solid;
+	text-align:left;
+}
+
+.tr-grid-header1
+{
+	background:url(../images/grid-header-bg.gif) repeat-x;
+	color:#333333;
+}
+
+.linktexthover
+{
+font-size:9px;
+color:#FF9933;
+cursor:pointer;
+}
+
+
+
+.linktexthover:hover
+{
+font-size:9px;
+color: #EAF4FF;
+cursor:pointer;
+}
+
+.more
+{
+	outline:none;
+	width:400px;
+	height:15px;
+	padding:6px 0;
+	text-align:center;
+	border:1px solid #ddd;
+	border-bottom:1px solid #aaa;
+	border-right:1px solid #aaa;
+	background-repeat:repeat-x;
+	background-position:left top;
+	font-size:14px;
+	text-shadow:1px 1px 1px #fff;
+	font-weight:bold;
+	margin-bottom:5px;
+	cursor:pointer;
+	background-image:url('../images/more.gif');
+	display:block;
+}
+.more:hover
+{
+border:1px solid #bbb;text-decoration:none;background-position:left -78px;
+}
+
+
+.swiftchoicebutton1
+{
+	BORDER: solid 0 #FFFFFF; BACKGROUND: URL(../images/button-bg.jpg) no-repeat; HEIGHT: 21px; WIDTH: 85px; COLOR: #000000; FONT-FAMILY: Verdana, Tahoma; FONT-SIZE: 11px; MARGIN: 0px; padding-top: 3px; padding-bottom: 15px; vertical-align:middle;
+	cursor:pointer;
+}
+
+.contact-border-grid
+{
+	border-bottom:#000000 1px solid;
+	border-right:#000000 1px solid;
+}
+
+.contact-td-grid
+{
+	border-top:#000000 1px solid;
+	border-left:#000000 1px solid;
+}

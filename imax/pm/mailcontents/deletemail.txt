@@ -1,0 +1,25 @@
+
+==============================================================
+
+Dear sir/madam,
+
+Official Email ID has been deleted.
+--------------------------------------------------------------
+ 
+		EMPLOYEE DETAILS :
+--------------------------------------------------------------
+
+		NAME : ##NAME##
+		DELETED ON : ##DDATE##
+		EMPLOYEE ID : ##EMPID##
+		E-MAIL : ##EMAIL##@##DOMAIN##
+		REASON : ##REASON##
+		REMARKS : ##REMARKS##
+ 
+==============================================================
+
+Thank you,
+Warm Regards,
+Webmaster,
+Relyon Softech Limited
+

@@ -1,0 +1,23 @@
+==============================================================
+
+Dear sir/madam,
+
+	Given Below Flash News Added.
+--------------------------------------------------------------
+ 
+		 Flash News DETAILS :
+--------------------------------------------------------------
+
+	PRODUCT : ##PRODUCT##
+	TITLE OF PRODUCT : ##TITLE##
+	URL PATH : ##LINK##
+	DESCRIPTION : ##DESC##
+	VALID TILL : ##DATE##
+
+ 
+==============================================================
+
+Thank you,
+Warm Regards,
+Webmaster,
+Relyon Softech Limited

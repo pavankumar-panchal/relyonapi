@@ -1,0 +1,135 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+nav {
+	padding: 10px 10px;
+	border: 1px #CCC solid;
+	background: #F3F3F3;
+}
+a {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #C00;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	color: #000
+}
+.inputdata
+{
+	border:1px solid #4C77B6;
+	background-color:#F0F0F0;
+}
+.pagination {
+	letter-spacing: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height:30px;
+	padding-top:12px;
+}
+.tableheading {
+	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-style: normal;
+	font-weight: bold;
+	background-color:#666666;
+	color: #FFF;
+}
+.tablerow1 {
+    background-color:#CCCCCC;
+	font-size: 16px;
+	color: #000;
+	font-style: normal;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.tablerow2 {
+	background-color: #EEEEEE;
+	font-size: 14px;
+	color: #000;
+	font-style: normal;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.maintable {
+	padding-left: 15px;
+	margin-bottom: 100px;
+	margin-top: 40px;
+	width: 50%;
+	height: 110%;
+	border: 1px solid #4C77B6;
+}
+.header {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 25px;
+}
+.tabdata {
+	width: 26%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+}
+.submit {
+	height: 29px;
+	width: 70px;
+	font-size: 16px;
+	margin-left: 15px;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+}
+.count {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+.currentpage {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	color: #060;
+	font-weight: bold;
+	background-color: #BEBEBE;
+	border-radius: 15px 15px 15px 15px;
+	padding:3px;
+}
+.message {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	min-width: 300px;
+	background: #F3F3F3;
+	border: #666 1px solid;
+	padding: 10px 10px 10px 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+.customer {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+}
+.version {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: 600;
+}
+.searcheddata
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:12px;
+	text-align:left;
+	color: #C30;
+	border:1px solid #CCC;
+	background: #F3F3F3;
+	height:24px;
+	padding-top:6px;
+	padding-left:8px;
+}
+.searcheddata1
+{
+	color:#000;
+}
+h1 {
+	font-family: Verdana, Geneva, sans-serif;
+}

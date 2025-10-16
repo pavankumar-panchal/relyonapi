@@ -1,0 +1,17 @@
+- Relyon Saral Product Master v1.03 beta -
+===============================
+Product Details :
+-------------------------------
+ 
+Product Version Update :
+-------------------------------
+
+PRODUCT : ##NAME##
+PRODUCT CODE : ##CODE##
+PATCH VERSION : ##PATCH##
+FILE SIZE : ##SIZE##
+RELEASE DATE : ##DATE##
+VERSION FROM : ##VERFROM##
+PATCH URL : ##URL## 
+
+===============================

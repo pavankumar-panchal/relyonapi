@@ -1,0 +1,28 @@
+# Enable env vars for local testing (Apache mod_env required)
+SetEnvIf Request_URI ".*" APP_DEBUG true
+# Replace these with your actual Google OAuth credentials for local tunnel or dev domain
+# Example for a local HTTPS tunnel (ngrok/Cloudflared):
+# SetEnv GOOGLE_CLIENT_ID your-client-id.apps.googleusercontent.com
+# SetEnv GOOGLE_CLIENT_SECRET your-client-secret
+# SetEnv GOOGLE_REDIRECT_URI https://your-dev-host/backend/public/index.php/api/auth/google/callback
+# Optional scopes
+# SetEnv GOOGLE_SCOPES "openid email profile"
+
+# CORS preflight passthrough
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# Preserve Authorization header for PHP (some stacks drop it)
+SetEnvIfNoCase Authorization "^(.+)$" HTTP_AUTHORIZATION=$1
+
+# Pretty URLs: route everything to index.php if not a real file/dir
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Security: prevent directory browsing
+Options -Indexes

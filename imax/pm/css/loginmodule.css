@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald '), local('Oswald'), url(./fonts/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
+}
+
+#apDiv2 
+{
+	width:185px;
+	height:19px;
+	top: 185px;
+	left: 108px;
+	font-size: 9px;
+	color: #2D3954;
+}
+
+h1 
+{
+	color: #006699;
+	margin: 0px 0px 5px;
+	padding: 0px 0px 3px;
+	font: bold 14px Verdana, Geneva, sans-serif;;
+	border-bottom: 1px dashed #E6E8ED;
+}
+
+h2 
+{
+	color: #000062;
+	margin: 0px 0px 5px;
+	padding: 0px 0px 3px;
+	font: bold 12px Verdana, Geneva, sans-serif;;
+	border-bottom: 1px dashed #E6E8ED;
+}
+
+a 
+{
+	font:Verdana, Geneva, sans-serif;
+	color: #2D3954;
+	
+}
+
+#msg_box
+{
+	/*border: 1px solid;*/
+    margin: 15px 0px;
+    width: 500px;	
+	padding:15px 20px 15px 55px;
+	box-shadow: 0 0 5px #888;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	text-shadow: 2px 2px 2px #ccc;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-family:Verdana, Geneva, sans-serif;
+	color: #f2f2f2;
+	background-color: #006699;
+	/*margin: 0px 0px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	
+	background-image: url('validation.png');*/
+}
+a:hover 
+{
+	color: #99CC00;
+}
+
+.err 
+{
+	font-family:Verdana, Geneva, sans-serif;
+	color: #666;
+}
+/*.textfield 
+{
+	font-family:Verdana, Geneva, sans-serif;
+	color: #333333;
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	padding-left: 1px;
+}
+th 
+{
+	font:Verdana, Geneva, sans-serif;
+	font-weight: normal;
+	text-align: left;
+}
+td
+{
+	font:Verdana, Geneva, sans-serif;
+	font-weight: normal;
+}*/
